@@ -1,0 +1,80 @@
+@import "./colors.scss";
+
+body {
+    background-color: $bg;
+}
+
+header {
+    display: grid;
+    grid-template-columns: auto 1fr 200px;
+    padding: .5rem 1rem;
+
+    .logo {
+        padding: 1rem 2rem;
+
+        img {
+            max-height: 35px;
+        }
+    }
+
+    .search {
+        position: relative;
+        align-self: center;
+        display: flex;
+        width: 100%;
+        i {
+            position: absolute;
+            left: .5rem;
+            bottom: .5rem;
+        }
+        
+        form {
+            width: 80%;
+        }
+
+        input {
+            max-height: 35px;
+            font-size: 1.2rem;
+            padding: .5rem 1rem .5rem 2rem;
+            border: none;
+            outline: none;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        button {
+            display: none;
+        }
+    }
+
+    .icons {
+        align-self: center;
+        font-size: 2rem;
+
+        i {
+            padding: 0 1rem;
+            cursor: pointer;
+        }
+    }
+    
+}
+
+
+
+@media screen and (max-width: 768px) {
+    header {
+        grid-template-columns: auto 150px; //i want the first row to be auto 50px, second row to be 100%
+
+        .search {
+            grid-row: 2;
+            width: 100%;
+            grid-column: span 2;
+    
+            form {
+                width: 100%
+            }
+        }
+    }
+
+   
+}
