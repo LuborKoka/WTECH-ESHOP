@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <link rel="stylesheet" type="text/css" href="./global-css/header.css">
+    <link rel="stylesheet" type="text/css" href="./global-css/nav.css">
     <link rel="stylesheet" type="text/css" href="./global-css/document.css">
+    <link rel="stylesheet" type="text/css" href="./global-css/layout.css">
+    <link rel="stylesheet" type="text/css" href="./css/content.css">
     <title>E-SHOP</title>
     <script src="./index.js"></script>
     <script src="https://kit.fontawesome.com/4e34836926.js" crossorigin="anonymous"></script>
@@ -29,14 +32,53 @@
         </span>
     </header>
 
-    <nav>
-        
-    </nav>
+    <div class="content-container">
+        <nav class="primary-navigation">
+            <div>
+                <a class="link" href="./index.html">CATEGORY</a>
+            </div>
+            <div>
+                <a class="link" href="./index.html">CATEGORY 13</a>
+            </div>
+            <div>
+                <a class="link" href="./index.html">CATEGORY 1658</a>
+            </div>
+            <div>
+                <a class="link" href="./index.html">CATEGORY</a>
+            </div>
+            <div>
+                <a class="link" href="./index.html">CATEGORY</a>
+            </div>
+            <div>
+                <a class="link" href="./index.html">CATEGORY</a>
+            </div>
+        </nav>
 
-    <main>
+        <main id="product-list-container">
+            <div class="sort-by-header">
+                <span class="active">Odporúčané</span>
+                <span>Najnovšie</span>
+                <span>Najlacnejšie</span>
+                <span>Najdrahšie</span>
+            </div>
 
-
-    </main>
+            <template id="product-card">
+                <div class="card">
+                    <a class="link" href="./index.html">
+                        <img src="./assets/product-placeholder.png" alt="product-placeholder" width="120px">
+                    <a class="link" href="./index.html">
+                        <strong>Product Name</strong>
+                    </a>
+    
+                    <b class="price">19.99€</b>
+    
+                    <button class="clickable-button buy">
+                        Pridať do košíka <i class="fa fa-solid fa-shopping-cart"></i>
+                    </button>
+                </div>
+            </template>
+        </main>
+    </div>
 
     <footer>
         <div>Logo made by <a href="https://www.designevo.com/" title="Free Online Logo Maker">DesignEvo free logo creator</a></div>

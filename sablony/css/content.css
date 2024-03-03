@@ -1,0 +1,58 @@
+.content-container main {
+  padding: 2rem 1rem;
+}
+
+.sort-by-header {
+  border-bottom: 1px solid rgba(0, 11, 58, 0.3);
+  padding: 0.5rem 1rem;
+  height: min-content;
+}
+.sort-by-header span {
+  padding: 0.5rem 1rem;
+  border-bottom: 3px solid transparent;
+  transition: border-bottom 0.2s;
+  cursor: pointer;
+}
+.sort-by-header span:hover {
+  border-bottom: 3px solid #000B3A;
+}
+.sort-by-header .active {
+  background-color: #E9E9EE;
+  border-bottom: 3px solid #000B3A;
+}
+
+.card {
+  transition: transform 0.5s, box-shadow 0.5s;
+  display: inline-grid;
+  padding: 1rem;
+  gap: 1rem;
+  margin: 0.5rem;
+}
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 5px rgba(0, 11, 58, 0.4);
+}
+.card a, .card .price {
+  text-align: center;
+}
+.card .buy {
+  padding: 0.5rem 1rem;
+}
+
+.clickable-button {
+  background: none;
+  border: none;
+  border-radius: 4px;
+  color: #F9F9FF;
+  background-color: #000B3A;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+@media (hover: hover) {
+  .clickable-button:hover {
+    box-shadow: 0 0 5px 1px rgba(0, 11, 58, 0.4);
+  }
+}
+
+/*# sourceMappingURL=content.css.map */

@@ -1,0 +1,25 @@
+.primary-navigation {
+  padding: 2rem 1rem;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 0 5px rgba(0, 11, 58, 0.4);
+}
+.primary-navigation a {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s;
+  border-radius: 3px;
+}
+.primary-navigation a:hover {
+  background-color: #E9E9EE;
+}
+
+.link {
+  color: #000B3A;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=nav.css.map */
