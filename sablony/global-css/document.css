@@ -7,4 +7,5 @@
 body {
     color: #000B3A;
     background-color: #F9F9FF;
+    max-width: 100vw;
 }

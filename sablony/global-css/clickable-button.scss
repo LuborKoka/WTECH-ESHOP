@@ -1,0 +1,18 @@
+@import '../global-css/colors.scss';
+
+.clickable-button {
+    background: none;
+    border: none;
+    border-radius: 4px;
+    color: $bg;
+    background-color: $text;
+    cursor: pointer;
+    transition: box-shadow .2s;
+}
+
+
+@media (hover:hover) {
+    .clickable-button:hover {
+        box-shadow: 0 0 5px 1px rgba($text, .4);
+    }
+}
