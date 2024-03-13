@@ -60,22 +60,30 @@ header {
     
 }
 
+.hamburger {
+    transition: transform .3s ease-in-out;
+}
+
+@media screen and (min-width: 769px) {
+    .hamburger {
+        display: none !important;
+    }
+}
 
 
 @media screen and (max-width: 768px) {
+
     header {
-        grid-template-columns: auto 150px; //i want the first row to be auto 50px, second row to be 100%
+        grid-template-columns: 70px auto 150px;
 
         .search {
             grid-row: 2;
             width: 100%;
-            grid-column: span 2;
+            grid-column: span 3;
     
             form {
                 width: 100%
             }
         }
     }
-
-   
 }

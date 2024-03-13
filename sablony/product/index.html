@@ -8,12 +8,19 @@
     <link rel="stylesheet" type="text/css" href="../global-css/document.css">
     <link rel="stylesheet" type="text/css" href="../global-css/layout.css">
     <link rel="stylesheet" type="text/css" href="../global-css/clickable-button.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/hamburgers.css"> <!--src: https://github.com/jonsuh/hamburgers-->
     <link rel="stylesheet" type="text/css" href="./css/content.css">
     <title>E-SHOP</title>
     <script src="https://kit.fontawesome.com/4e34836926.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
+        <button class="hamburger hamburger--emphatic" type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+        </button>
+
         <div class="logo">
             <a href="./index.html"><img src="../assets/logo/logo.png" alt="Logo" ></a>
         </div>
@@ -110,7 +117,7 @@
                         </strong>
                     </div>
 
-                    <button style="padding: 1rem 2rem; width: 100%; font-size: 1.2rem; margin-top: 2rem;" class="clickable-button">
+                    <button style="padding: 1rem 2rem; font-size: 1.2rem; margin-top: 2rem;" class="clickable-button">
                         Pridať do košíka <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                 </section>
@@ -122,5 +129,6 @@
 
 
     <script src="./index.js"></script>
+    <script src="../menucko.js"></script>
 </body>
 </html>

@@ -49,14 +49,25 @@ header .icons i {
   cursor: pointer;
 }
 
+.hamburger {
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+@media screen and (min-width: 769px) {
+  .hamburger {
+    display: none !important;
+  }
+}
 @media screen and (max-width: 768px) {
   header {
-    grid-template-columns: auto 150px;
+    grid-template-columns: 70px auto 150px;
   }
   header .search {
     grid-row: 2;
     width: 100%;
-    grid-column: span 2;
+    grid-column: span 3;
   }
   header .search form {
     width: 100%;

@@ -4,6 +4,7 @@
   border-radius: 4px;
   color: #F9F9FF;
   background-color: #000B3A;
+  width: 100%;
   cursor: pointer;
   transition: box-shadow 0.2s;
 }

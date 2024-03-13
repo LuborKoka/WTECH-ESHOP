@@ -26,3 +26,20 @@
     color: $text;
     text-decoration: none;
 }
+
+
+@media screen and (max-width: 768px) {
+    .primary-navigation {
+        transition: transform .3s ease-in-out;
+        position: fixed;
+        left: 0;
+        top: 0;
+        transform: translateX(-101%);
+        z-index: 20;
+        background-color: $bg;
+    }
+
+    .nav-active {
+        transform: translateX(0);
+    }
+}
