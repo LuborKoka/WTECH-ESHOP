@@ -76,4 +76,19 @@ main .product-info {
   padding: 0.25rem 0;
 }
 
+@media screen and (max-width: 768px) {
+  main .product-info {
+    display: block;
+  }
+  main .product-info .product-details {
+    padding-top: 2rem;
+  }
+  main h2 {
+    text-align: center;
+  }
+  .carousel {
+    height: clamp(200px, 20vh, 500px);
+  }
+}
+
 /*# sourceMappingURL=content.css.map */

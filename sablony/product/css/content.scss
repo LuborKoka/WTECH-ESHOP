@@ -89,3 +89,22 @@ main {
         }
     }
 }
+
+
+@media screen and (max-width: 768px) {
+    main .product-info {
+        display: block;
+
+        .product-details {
+            padding-top: 2rem;
+        }
+    }
+
+    main h2 {
+        text-align: center;
+    }
+
+    .carousel {
+        height: clamp(200px, 20vh, 500px);
+    }
+}
