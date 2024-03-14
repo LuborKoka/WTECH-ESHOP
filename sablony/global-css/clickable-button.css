@@ -2,11 +2,24 @@
   background: none;
   border: none;
   border-radius: 4px;
-  color: #F9F9FF;
   background-color: #000B3A;
   width: 100%;
+  color: #F9F9FF;
   cursor: pointer;
   transition: box-shadow 0.2s;
+}
+.clickable-button * {
+  color: #F9F9FF;
+  text-decoration: none;
+}
+.clickable-button.low-prio {
+  border: 1px solid #000B3A;
+  background-color: transparent;
+  color: #000B3A;
+}
+.clickable-button.low-prio * {
+  color: #000B3A;
+  text-decoration: none;
 }
 
 @media (hover: hover) {

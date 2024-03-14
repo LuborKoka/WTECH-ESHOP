@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" type="text/css" href="../global-css/header.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/document.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/clickable-button.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/hamburgers.css"> <!--src: https://github.com/jonsuh/hamburgers-->
+    <link rel="stylesheet" type="text/css" href="./css/content.css">
+    <title>E-SHOP</title>
+    <script src="https://kit.fontawesome.com/4e34836926.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <button class="hamburger hamburger--emphatic" type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+        </button>
+
+        <div class="logo">
+            <a href="../index.html"><img src="../assets/logo/logo.png" alt="Logo" ></a>
+        </div>
+        
+        <div class="search">
+            <form>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Hľadaj">
+                <button></button>
+            </form>
+        </div>
+        
+        <span class="icons">
+            <a href="./index.html"><i class="fa fa-solid fa-shopping-cart"></i></a>
+            <i class="fa fa-solid fa-user"></i>
+        </span>
+    </header>
+
+    <aside>
+        <nav class="primary-navigation">
+            <div>
+                <a class="link" href="../index.html">CATEGORY</a>
+            </div>
+            <div>
+                <a class="link" href="../index.html">CATEGORY 13</a>
+            </div>
+            <div>
+                <a class="link" href="../index.html">CATEGORY 1658</a>
+            </div>
+            <div>
+                <a class="link" href="../index.html">CATEGORY</a>
+            </div>
+            <div>
+                <a class="link" href="../index.html">CATEGORY</a>
+            </div>
+            <div>
+                <a class="link" href="../index.html">CATEGORY</a>
+            </div>
+        </nav>
+    </aside>
+    
+    <main>
+        <h2>Your Shopping Cart</h2>
+
+        <section style="display: grid; gap: 2rem">
+            <div id="items" style="display: grid; gap: 1rem;">
+                <template id="cart-item-template">
+                    <div class="cart-item">
+                        <img alt="cart-item" src="./assets/image_01.jpeg">
+                        <p>
+                            <a href="../product/index.html">Oznacenie produktu</a>
+                        </p>
+                        <b></b>
+                        <input type="number" min="0">
+                        <p></p>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                </template>
+            </div>
+
+            <strong id="cart-total" style="display: flex; justify-content: flex-end; font-size: 1.2rem;"></strong>
+
+            <div style="display: flex; justify-content: space-between;">
+                <button style="width: auto; padding: .75rem 1.5rem;" class="clickable-button low-prio">
+                    <a href="../index.html"><i style="padding-right: 5px; font-size: 1.2rem; transform: translateY(2.5px);" class="fa-solid fa-left-long"></i>Pokracovat v nakupe</a>
+                </button>
+
+                <button style="width: auto; padding: .75rem 1.5rem;" class="clickable-button">
+                    <a>Dokoncit objednavku<i style="padding-left: 5px; font-size: 1.2rem; transform: translateY(2.5px);" class="fa-solid fa-right-long"></i></a>
+                </button>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="./index.js"></script>
+    <script src="../menucko.js"></script>
+</body>
+</html>

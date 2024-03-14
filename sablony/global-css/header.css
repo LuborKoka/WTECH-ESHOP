@@ -4,9 +4,9 @@ header {
   z-index: 20;
   display: grid;
   grid-template-columns: auto 1fr 200px;
-  padding: 0.5rem 1rem;
   box-shadow: 0 0 5px rgba(0, 11, 58, 0.4);
   background-color: #E9E9EE;
+  padding-bottom: 1rem;
 }
 header .logo {
   padding: 1rem 2rem;
@@ -15,18 +15,17 @@ header .logo img {
   max-height: 35px;
 }
 header .search {
+  --search-margin-side: 1rem;
   position: relative;
   align-self: center;
   display: flex;
-  width: 100%;
+  width: calc(100% - 3 * var(--search-margin-side));
+  margin: 0 1rem;
 }
 header .search i {
   position: absolute;
   left: 0.5rem;
   bottom: 0.5rem;
-}
-header .search form {
-  width: 80%;
 }
 header .search input {
   max-height: 35px;
@@ -44,15 +43,16 @@ header .icons {
   align-self: center;
   font-size: 2rem;
 }
+header .icons a {
+  color: #000B3A;
+}
 header .icons i {
   padding: 0 1rem;
   cursor: pointer;
 }
 
 .hamburger {
-  transition-property: transform;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 @media screen and (min-width: 769px) {
@@ -66,7 +66,6 @@ header .icons i {
   }
   header .search {
     grid-row: 2;
-    width: 100%;
     grid-column: span 3;
   }
   header .search form {

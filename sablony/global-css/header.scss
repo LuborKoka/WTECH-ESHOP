@@ -6,9 +6,9 @@ header {
     z-index: 20;
     display: grid;
     grid-template-columns: auto 1fr 200px;
-    padding: .5rem 1rem;
     box-shadow: 0 0 5px rgba($text, .4);
     background-color: $header-bg;
+    padding-bottom: 1rem;
 
     .logo {
         padding: 1rem 2rem;
@@ -19,18 +19,16 @@ header {
     }
 
     .search {
+        --search-margin-side: 1rem;
         position: relative;
         align-self: center;
         display: flex;
-        width: 100%;
+        width: calc(100% - 3 * var(--search-margin-side));
+        margin: 0 1rem;
         i {
             position: absolute;
             left: .5rem;
             bottom: .5rem;
-        }
-        
-        form {
-            width: 80%;
         }
 
         input {
@@ -52,6 +50,10 @@ header {
         align-self: center;
         font-size: 2rem;
 
+        a {
+            color: $text;
+        }
+
         i {
             padding: 0 1rem;
             cursor: pointer;
@@ -72,13 +74,11 @@ header {
 
 
 @media screen and (max-width: 768px) {
-
     header {
         grid-template-columns: 70px auto 150px;
 
         .search {
             grid-row: 2;
-            width: 100%;
             grid-column: span 3;
     
             form {
