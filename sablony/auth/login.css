@@ -1,0 +1,44 @@
+  #login-form {
+    max-width: 18rem;
+    margin: 3.125rem auto;
+    background: #fff;
+    padding: 1.25rem;
+    border-radius: 0.3125rem;
+    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+  }
+  #login-form input{
+    width: 100%;
+    margin-bottom: 1.25rem;
+    padding: 0.625rem;
+    box-sizing: border-box;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.1875rem;
+  }
+
+    #auth {
+    width: 100%;
+    margin-bottom: 1.25rem;
+    padding: 0.625rem;
+    box-sizing: border-box;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.1875rem;
+  }
+  
+  .alternative{
+    max-width: 18rem;
+    margin: 3.125rem auto;
+    text-align: center;
+  }
+
+  #plink{
+    text-decoration: underline;
+  }
+
+  #login-form .name-inputs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#login-form .name-inputs input {
+    flex: 1;
+}
