@@ -1,0 +1,46 @@
+@import './colors.scss';
+
+.labeled-input {
+    position: relative;
+    border-radius: 3px;
+
+    input {
+        padding: .5rem 1rem;
+        border: none;
+        outline: none;
+        border-radius: 3px;
+        color: $text;
+        background-color: transparent;
+        width: 100%;
+        transition: box-shadow .3s;
+
+        &:focus, &:valid {
+            & + label {
+                transform: translateY(-100%) translateX(-10%) scale(.8);
+            }
+        }
+    }
+
+    label {
+        position: absolute;
+        left: 1rem;
+        top: .35rem;
+        pointer-events: none;
+        transition: all .3s;
+    }
+}
+
+
+@media (hover: hover) {
+    .labeled-input.elevated input {
+        &:hover, &:focus, &:valid {
+            box-shadow: 0 0 5px rgba($text, .5);
+        }
+    }
+}
+
+@media (hover: none) {
+    .labeled-input.elevated {
+        box-shadow: 0 0 5px rgba($text, .5);
+    }
+}
