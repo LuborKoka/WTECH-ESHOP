@@ -1,0 +1,118 @@
+@import '../../global-css/colors.scss';
+@import '../../global-css/mixin.scss';
+
+
+main {
+    padding: 2rem 4rem;   
+}
+
+.payment-details {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 0 10px rgba($color: $text, $alpha: .5);
+}
+
+.payment-progress {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 35px 1fr 35px 1fr 35px 1fr 35px;
+    position: relative;
+
+    .circle {
+        z-index: 1;
+        position: relative;
+        background-color: $bg;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        font-weight: bold;
+        border: 1px solid $text;
+        transition: color .2s, background-color .2s;
+        @include center();
+
+        &::after {
+            content: attr(data-content);
+            color: $text;
+            position: absolute;
+            top: -30%;
+            left: 100%;
+        }
+    
+        &.filled {
+            background-color: $text;
+            color: $bg
+        }
+    }
+
+    .bar {
+        position: relative;
+        width: calc(100% + 6px);
+        height: 12px;
+        border-top: 1px solid $text;
+        border-bottom: 1px solid $text; 
+        transform: translateX(-4px);
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            transform: scaleX(0);
+            transform-origin: 0;
+            background-color: $text;
+            transition: transform 1s ease-in-out;
+        }
+    }
+
+    @for $i from 0 through 100 {
+        .filled-#{$i}.bar::before {
+            transform: scaleX(#{$i / 100});
+        }
+    }
+}
+
+
+.form-fields {
+    display: grid;
+    gap: 2rem;
+    padding: 1.5rem 0;
+
+    .option {
+        display: grid;
+        grid-template-columns: auto 70px 1fr auto;
+        gap: 1rem;
+        padding: 0 1rem;
+        align-items: center;
+
+        img {
+            max-height: 35px;
+            justify-self: center;
+        }
+    }
+}
+
+
+
+@media screen and (min-width: 769px) {
+    aside {
+      display: none;
+    }
+
+    .payment-details {
+        padding: 2rem 3rem;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    main {
+        padding: 2rem .5rem;
+    }
+
+    .payment-progress {
+        padding: 1.5rem .5rem 0;
+    }
+
+    .form-fields {
+        padding: 1.5rem 1rem;
+    }
+}

@@ -8,22 +8,24 @@
     width: 100%;
     color: $bg;
     cursor: pointer;
-    transition: box-shadow .2s;
+    transition: box-shadow .2s opacity .2s;
+    text-decoration: none;
 
-    * {
+    a {
         color: $bg;
         text-decoration: none;
+    }
+
+    &:disabled {
+        opacity: .7;
+        cursor: not-allowed;
     }
 
     &.low-prio {
         border: 1px solid $text;
         background-color: transparent;
-        color: $text;
-        
-        * {
-            color: $text;
-            text-decoration: none;
-        }
+        color: $text !important;
+        text-decoration: none;
     }
 }
 
