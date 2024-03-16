@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../global-css/header.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/document.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/clickable-button.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/hamburgers.css">
+    <!--src: https://github.com/jonsuh/hamburgers-->
+    <link rel="stylesheet" type="text/css" href="./css/content.css">
+    <title>E-SHOP</title>
+    <script src="https://kit.fontawesome.com/4e34836926.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <button class="hamburger hamburger--emphatic" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
+
+        <div class="logo">
+            <a href="../index.html"><img src="../assets/logo/logo.png" alt="Logo"></a>
+        </div>
+
+        <div class="search">
+            <form>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Hľadaj">
+                <button></button>
+            </form>
+        </div>
+
+        <span class="icons">
+            <a href="../shopping-cart/index.html"><i class="fa fa-solid fa-shopping-cart"></i></a>
+            <i class="fa fa-solid fa-user"></i>
+        </span>
+    </header>
+
+    <div class="content-container">
+        <nav class="primary-navigation">
+            <div>
+                <a class="link" href="./add.html">Pridať produkt</a>
+            </div>
+            <div>
+                <a class="link" href="../index.html">Upraviť produkt</a>
+            </div>
+
+        </nav>
+
+        <main>
+
+            <h2>Pridať produkt</h2>
+
+            <div class="product-info">
+                
+
+                <section class="product-details">
+                    <ul>
+                        <li>
+                            <label for="product-name">Názov produktu:</label>
+                            <input type="text" id="product-name" name="product-name" required>
+                        </li>
+                        <li>
+                            <label for="product-description">Popis:</label>
+                            <textarea id="product-description" name="product-description" rows="4" required></textarea>
+                        </li>
+                        <li>
+                            <label for="product-price">Cena:</label>
+                            <input type="number" id="product-price" name="product-price" step="0.01" required>
+
+                        </li>
+                        <li>
+                            <label for="product-stock">Množstvo:</label>
+                            <input type="number" id="product-stock" name="product-stock" required>
+
+                        </li>
+                        <li>
+                            <label for="product-image-upload">Nahrať obrázok:</label>
+                            <input type="file" id="product-image-upload" name="product-image-upload" accept="image/*" required multiple>
+                        </li>
+                    </ul>
+
+                    
+
+                    <button style="padding: 1rem 2rem; font-size: 1.2rem; margin-top: 2rem;" class="clickable-button">
+                        Potvrdiť
+                    </button>
+                </section>
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script src="./index.js"></script>
+    <script src="../menucko.js"></script>
+    <script>
+        document.getElementById('product-image-upload').addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('preview-image').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+
+</html>
