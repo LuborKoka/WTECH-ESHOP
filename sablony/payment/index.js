@@ -4,15 +4,6 @@ const paymentOptions = document.querySelectorAll('#step-3 .option')
 
 let currentStep = 1
 
-async function sleep(milliseconds, callback) {
-    await new Promise(() => setTimeout(() => {
-        if ( callback ) {
-            callback()
-        }
-    }, milliseconds))
-    return true
-}
-
 function fillBar(index, percentage = 100) {
     const bar = document.querySelectorAll('.payment-progress .bar')[index]
     bar.classList.add(`filled-${percentage}`)
@@ -68,7 +59,7 @@ function validateTab(tabId) {
 async function nextPrevStep(isNext) {
     const n = isNext ? currentStep : currentStep - 1
     const circle = document.querySelectorAll(`.payment-progress .circle`)[n]
-    isNext ? circle.classList.add('filled') : sleep(1000, () => circle.classList.remove('filled'))
+    isNext ? circle.classList.add('filled') : setTimeout(() => circle.classList.remove('filled'), 1000)
 
     document.querySelector(`#step-${currentStep}`).style.display = 'none'
     document.querySelector(`#step-${isNext ? ++currentStep : --currentStep}`).style.display = 'grid'
