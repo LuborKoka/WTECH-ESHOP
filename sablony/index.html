@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="./global-css/clickable-button.css">
     <link rel="stylesheet" type="text/css" href="./global-css/hamburgers.css"> <!--src: https://github.com/jonsuh/hamburgers-->
     <link rel="stylesheet" type="text/css" href="./css/content.css">
+    <link rel="stylesheet" type="text/css" href="./css/popup.css">
     <title>E-SHOP</title>
     <script src="./index.js"></script>
     <script src="https://kit.fontawesome.com/4e34836926.js" crossorigin="anonymous"></script>
@@ -62,13 +63,19 @@
             </div>
         </nav>
 
-        <main id="product-list-container">
+        <main>
             <div class="sort-by-header">
                 <span class="active">Odporúčané</span>
                 <span>Najnovšie</span>
                 <span>Najlacnejšie</span>
                 <span>Najdrahšie</span>
+
+                <div class="clickable-button" id="filter" style="padding: .75rem 1.5rem; width: auto;">
+                    <i class="fa-solid fa-filter"></i> Filter
+                </div>
             </div>
+
+            
 
             <template id="product-card">
                 <div class="card">
@@ -85,6 +92,52 @@
                     </button>
                 </div>
             </template>
+
+            <div class="auto-grid" id="product-list-container"></div>
+
+            <div class="filter-window-framefix">
+                <div class="filter-animation-frame">
+                    <div class="filter-window">
+                        <div class="filter-expand">
+                            <i class="fa-solid fa-caret-down"></i>
+                            <span>Typ</span>
+                        </div>
+    
+                        <div class="filter-content">
+                            <div>
+                                <div>
+                                    <input type="checkbox" name="book_type" id="printed">
+                                    <label for="printed">Tlačené knihy</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="book_type" id="electronic">
+                                    <label for="electronic">Elektronické knihy</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="filter-expand">
+                            <i class="fa-solid fa-caret-down"></i>
+                            <span>Vydavateľstvá</span>
+                        </div>
+                        
+                        <div class="filter-content">
+                            <div>
+                                <div>
+                                    <input type="checkbox" name="book_publisher" id="slovart">
+                                    <label for="slovart">slovart</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="book_publisher" id="fragment">
+                                    <label for="fragment">Fragment</label>
+                                </div>
+                            </div>
+                        </div>
+                
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 
@@ -93,5 +146,6 @@
     </footer>   
 
     <script src="./menucko.js"></script>
+    <script src="./popup.js"></script>
 </body>
 </html>
