@@ -70,6 +70,10 @@ header {
     .hamburger {
         display: none !important;
     }
+
+    header form {
+        width: 80%
+    }
 }
 
 
@@ -77,12 +81,31 @@ header {
     header {
         grid-template-columns: 70px auto 150px;
 
+        .logo {
+            display: flex;
+            justify-content: center;
+        }
+
         .search {
             grid-row: 2;
             grid-column: span 3;
     
             form {
                 width: 100%
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    header {
+        grid-template-columns: 70px auto auto;
+
+        .icons {
+            font-size: 1.4rem;
+
+            i {
+                padding: 0 .5rem
             }
         }
     }

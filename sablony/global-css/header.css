@@ -59,10 +59,17 @@ header .icons i {
   .hamburger {
     display: none !important;
   }
+  header form {
+    width: 80%;
+  }
 }
 @media screen and (max-width: 768px) {
   header {
     grid-template-columns: 70px auto 150px;
+  }
+  header .logo {
+    display: flex;
+    justify-content: center;
   }
   header .search {
     grid-row: 2;
@@ -70,6 +77,17 @@ header .icons i {
   }
   header .search form {
     width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  header {
+    grid-template-columns: 70px auto auto;
+  }
+  header .icons {
+    font-size: 1.4rem;
+  }
+  header .icons i {
+    padding: 0 0.5rem;
   }
 }
 

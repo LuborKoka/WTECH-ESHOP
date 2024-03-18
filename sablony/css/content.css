@@ -5,13 +5,14 @@
 .sort-by-header {
   border-bottom: 1px solid rgba(0, 11, 58, 0.3);
   padding: 0.5rem 1rem;
-  height: min-content;
+  position: relative;
 }
 .sort-by-header span {
   padding: 0.5rem 1rem;
   border-bottom: 3px solid transparent;
   transition: border-bottom 0.2s;
   cursor: pointer;
+  display: inline-block;
 }
 .sort-by-header span:hover {
   border-bottom: 3px solid #000B3A;
@@ -23,10 +24,10 @@
 
 .card {
   transition: transform 0.5s, box-shadow 0.5s;
-  display: inline-grid;
+  display: grid;
   padding: 1rem;
   gap: 1rem;
-  margin: 0.5rem;
+  width: 100%;
 }
 .card:hover {
   transform: scale(1.02);
@@ -37,6 +38,30 @@
 }
 .card .buy {
   padding: 0.5rem 1rem;
+  max-width: 200px;
+  justify-self: center;
+}
+
+.auto-grid {
+  padding-top: 2rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+}
+
+@media (hover: none) {
+  .card {
+    background-image: linear-gradient(rgba(0, 11, 58, 0.03) 1%, 10%, transparent 30%);
+  }
+}
+@media screen and (min-width: 769px) {
+  .sort-by-header .clickable-button {
+    width: auto;
+    position: absolute;
+    right: 0;
+    top: 50%; /* Move the top of the button to the middle of the parent */
+    transform: translateY(-50%);
+  }
 }
 
 /*# sourceMappingURL=content.css.map */
