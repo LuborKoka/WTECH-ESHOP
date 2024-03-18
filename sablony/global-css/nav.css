@@ -33,7 +33,7 @@
     z-index: 20;
     background-color: #F9F9FF;
   }
-  .nav-active {
+  .primary-navigation.active {
     transform: translateX(0);
   }
 }
