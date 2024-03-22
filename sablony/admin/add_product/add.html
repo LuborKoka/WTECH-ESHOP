@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../global-css/header.css">
-    <link rel="stylesheet" type="text/css" href="../global-css/nav.css">
-    <link rel="stylesheet" type="text/css" href="../global-css/document.css">
-    <link rel="stylesheet" type="text/css" href="../global-css/layout.css">
-    <link rel="stylesheet" type="text/css" href="../global-css/clickable-button.css">
-    <link rel="stylesheet" type="text/css" href="../global-css/hamburgers.css">
+    <link rel="stylesheet" type="text/css" href="../../global-css/header.css">
+    <link rel="stylesheet" type="text/css" href="../../global-css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../../global-css/document.css">
+    <link rel="stylesheet" type="text/css" href="../../global-css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../../global-css/clickable-button.css">
+    <link rel="stylesheet" type="text/css" href="../../global-css/hamburgers.css">
     <!--src: https://github.com/jonsuh/hamburgers-->
     <link rel="stylesheet" type="text/css" href="./css/content.css">
     <title>E-SHOP</title>
@@ -25,7 +25,7 @@
         </button>
 
         <div class="logo">
-            <a href="../index.html"><img src="../assets/logo/logo.png" alt="Logo"></a>
+            <a href="../../index.html"><img src="../../assets/logo/logo.png" alt="Logo"></a>
         </div>
 
         <div class="search">
@@ -37,8 +37,8 @@
         </div>
 
         <span class="icons">
-            <a href="../shopping-cart/index.html"><i class="fa fa-solid fa-shopping-cart"></i></a>
-            <i class="fa fa-solid fa-user"></i>
+            <a href="../../shopping-cart/index.html"><i class="fa fa-solid fa-shopping-cart"></i></a>
+            <a href="../../auth/login.html"><i class="fa fa-solid fa-user"></i></a>
         </span>
     </header>
 
@@ -48,7 +48,7 @@
                 <a class="link" href="./add.html">Pridať produkt</a>
             </div>
             <div>
-                <a class="link" href="../index.html">Upraviť produkt</a>
+                <a class="link" href="../edit_product/index.html">Upraviť produkt</a>
             </div>
 
         </nav>
@@ -100,19 +100,8 @@
 
 
     <script src="./index.js"></script>
-    <script src="../menucko.js"></script>
-    <script>
-        document.getElementById('product-image-upload').addEventListener('change', function () {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    document.getElementById('preview-image').src = e.target.result;
-                }
-                reader.readAsDataURL(file);
-            }
-        });
-    </script>
+    <script src="./../../menucko.js"></script>
+    
 </body>
 
 </html>

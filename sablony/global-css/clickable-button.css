@@ -23,6 +23,12 @@
   color: #000B3A !important;
   text-decoration: none;
 }
+.clickable-button.low-prio.delete {
+  border: 1px solid #ff0000;
+  background-color: transparent;
+  color: #ff0000 !important;
+  text-decoration: none;
+}
 
 @media (hover: hover) {
   .clickable-button:hover {

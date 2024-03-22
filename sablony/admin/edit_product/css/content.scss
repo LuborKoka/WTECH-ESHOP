@@ -1,0 +1,110 @@
+@import "../../global-css/colors.scss";
+@import "../../global-css/mixin.scss";
+
+main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 2rem;
+
+    .product-info {
+        display: flex;
+        flex-grow: 1;
+        padding-top: 2rem;
+    }
+
+}
+
+
+.carousel {
+    position: relative;
+    padding: 0 2rem;
+    flex: 55%;
+    max-height: clamp(200px, 20vh, 500px);
+
+    &-active-element {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        container-type: size;
+    }
+
+    &-item-container {
+        position: absolute;
+        inset: 0;
+        transition: transform .3s ease-in-out;
+        @include center();
+    }
+
+    .image {
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .to-right {
+        transform: translateX(101%);
+    }
+
+    .to-left {
+        transform: translateX(-101%);
+    }
+
+    .swipe {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 4rem;
+        font-size: 2rem;
+        cursor: pointer;
+        @include center();
+
+        &.left {
+            left: 0;
+            display: none;
+
+            &:hover {
+                background-image: linear-gradient(to left, transparent, rgba($text, .1), rgba($text, .1));
+            }
+        }
+
+        &.right {
+            right: 0;
+
+            &:hover {
+                background-image: linear-gradient(to right, transparent, rgba($text, .1), rgba($text, .1));
+            }
+        }
+    }
+}
+
+
+.product-details {
+    flex: 45%;
+    padding: 0 1rem;
+
+    ul {
+        list-style: none;
+        li {
+            padding: .25rem 0;
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    main .product-info {
+        display: block;
+
+        .product-details {
+            padding-top: 2rem;
+        }
+    }
+
+    main h2 {
+        text-align: center;
+    }
+
+    .carousel {
+        height: clamp(200px, 20vh, 500px);
+    }
+}
