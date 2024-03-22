@@ -71,6 +71,11 @@ main .product-info {
   flex-direction: column;
 }
 
+.product-details {
+  width: 40rem;
+  padding: 0 1rem;
+}
+
 .product-details ul li label {
   margin-bottom: 0.5rem; /* Adjust the spacing between label and input */
 }
