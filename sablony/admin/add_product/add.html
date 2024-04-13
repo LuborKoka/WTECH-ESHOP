@@ -96,8 +96,12 @@
                             <input type="text" id="product-price" name="product-price" required>
                         </li>
                         <li>
-                            <label for="product-image-upload">Nahrať obrázok:</label>
-                            <input type="file" id="product-image-upload" name="product-image-upload" accept="image/*" required multiple>
+                            <label class="clickable-button low-prio" style="padding: .75rem 1.5rem">
+                                <span><i class="fa-solid fa-file-import" style="padding-right: .5rem;"></i> Pridať obrázok</span>
+                                <input style="display: none;" type="file" id="product-image-upload" name="product-image-upload" accept="image/*" required multiple>
+                            </label>
+                            <!--<label for="product-image-upload">Nahrať obrázok:</label>-->
+                            
                         </li>
                     </ul>
 

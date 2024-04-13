@@ -72,7 +72,7 @@ main .product-info {
 }
 
 .product-details {
-  width: 40rem;
+  max-width: 40rem;
   padding: 0 1rem;
 }
 

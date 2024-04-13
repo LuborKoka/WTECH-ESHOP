@@ -27,11 +27,20 @@
         color: $text !important;
         text-decoration: none;
     }
+
+    &.delete {
+        border: 1px solid #ff0000;
+        color: #ff0000 !important;
+      }
 }
 
 
-@media (hover:hover) {
+@media (hover: hover) {
     .clickable-button:hover {
         box-shadow: 0 0 5px 1px rgba($text, .4);
+    }
+
+    .clickable-button.delete:hover {
+        box-shadow: 0 0 5px 1px rgba(red, .4);
     }
 }
