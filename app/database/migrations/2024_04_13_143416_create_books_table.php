@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('images')->nullable();
             $table->text('title');
             $table->string('publisher', 20);
-            $table->timestampTz('released_at')->default(now());
+            $table->timestampTZ('released_at')->default(DB::raw('NOW()'));
             $table->integer('stock')->default(0);
             $table->double('cost')->default(0);
             $table->foreignId('genre_id')->constrained()->onDelete('cascade');
