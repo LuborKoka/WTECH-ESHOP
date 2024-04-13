@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('images')->nullable();
             $table->text('title');
-            $table->string('publisher', 20);
+            $table->string('publisher', 30);
             $table->timestampTZ('released_at')->default(DB::raw('NOW()'));
             $table->integer('stock')->default(0);
             $table->double('cost')->default(0);
