@@ -9,25 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('shopping_carts', function (Blueprint $table) {
             $table->id();
-            $table->string('email', 320)->unique();
-            $table->string('password', 80);
-            $table->string('first_name', 20);
-            $table->string('last_name', 25);
-            $table->text('address');
-            $table->string('zipcode', 5);
-            $table->string('city', 35);
-            $table->string('phone_number', 13);
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestampTZ('created_at')->default(DB::raw('NOW()'));
             $table->timestampTZ('updated_at')->default(DB::raw('NOW()'));
         });
 
         DB::statement('
             CREATE TRIGGER update_updated_at_trigger
-            BEFORE UPDATE ON users
+            BEFORE UPDATE ON shopping_carts
             FOR EACH ROW
             EXECUTE FUNCTION update_updated_at_column();
         ');
@@ -36,8 +29,8 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('shopping_carts_');
     }
 };

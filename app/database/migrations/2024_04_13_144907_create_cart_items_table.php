@@ -11,23 +11,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('cart_items', function (Blueprint $table) {
             $table->id();
-            $table->string('email', 320)->unique();
-            $table->string('password', 80);
-            $table->string('first_name', 20);
-            $table->string('last_name', 25);
-            $table->text('address');
-            $table->string('zipcode', 5);
-            $table->string('city', 35);
-            $table->string('phone_number', 13);
+            $table->integer('count');
+            $table->foreignId('book_id')->constrained()->onDelete('cascade');
+            $table->foreignId('cart_id')->constrained('shopping_carts')->onDelete('cascade');
             $table->timestampTZ('created_at')->default(DB::raw('NOW()'));
             $table->timestampTZ('updated_at')->default(DB::raw('NOW()'));
         });
 
+        DB::statement('ALTER TABLE cart_items ADD CONSTRAINT count_more_than_zero CHECK (count > 0);');
         DB::statement('
             CREATE TRIGGER update_updated_at_trigger
-            BEFORE UPDATE ON users
+            BEFORE UPDATE ON cart_items
             FOR EACH ROW
             EXECUTE FUNCTION update_updated_at_column();
         ');
@@ -38,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('cart_items');
     }
 };
