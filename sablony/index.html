@@ -2,20 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/header.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/nav.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/document.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/layout.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/clickable-button.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/hamburgers.css') }}"> <!--src: https://github.com/jonsuh/hamburgers-->
-    <link href="{{ asset('/css/content.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/popup.css') }}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" type="text/css" href="./global-css/header.css">
+    <link rel="stylesheet" type="text/css" href="./global-css/nav.css">
+    <link rel="stylesheet" type="text/css" href="./global-css/document.css">
+    <link rel="stylesheet" type="text/css" href="./global-css/layout.css">
+    <link rel="stylesheet" type="text/css" href="./global-css/clickable-button.css">
+    <link rel="stylesheet" type="text/css" href="./global-css/hamburgers.css"> <!--src: https://github.com/jonsuh/hamburgers-->
+    <link rel="stylesheet" type="text/css" href="./css/content.css">
+    <link rel="stylesheet" type="text/css" href="./css/popup.css">
     <title>E-SHOP</title>
-    <script src="{{ asset('/js/index.js') }}" ></script>
-    <script src="{{ asset('/js/menucko.js') }}" ></script>
-    <script src="{{ asset('/js/popup.js') }}" ></script>
-
+    <script src="./index.js"></script>
     <script src="https://kit.fontawesome.com/4e34836926.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -27,7 +24,7 @@
         </button>
 
         <div class="logo">
-            <a href="{{ route('home') }}"><img src="{{ asset('/images/logo.png') }}" alt="Logo" ></a>
+            <a href="./index.html"><img src="./assets/logo/logo.png" alt="Logo" ></a>
         </div>
         
         <div class="search">
@@ -39,7 +36,7 @@
         </div>
         
         <span class="icons">
-            <a href="{{ route('cart') }}"><i class="fa fa-solid fa-shopping-cart"></i></a>
+            <a href="./shopping-cart/index.html"><i class="fa fa-solid fa-shopping-cart"></i></a>
             <a href="./auth/login.html"><i class="fa fa-solid fa-user"></i></a>
         </span>
     </header>
@@ -82,21 +79,19 @@
 
             <template id="product-card">
                 <div class="card">
-                    <a class="link" href="{{ route('product') }}">
-                        <img src="{{ asset('/images/product-placeholder.png') }}" alt="product-placeholder" width="120px">
-                    </a>
-                    <a class="link" href="{{ route('product') }}"> 
+                    <a class="link" href="./product/index.html">
+                        <img src="./assets/product-placeholder.png" alt="product-placeholder" width="120px">
+                    <a class="link" href="./product/index.html">
                         <strong>Kúzelníčka z Arandoru</strong>
                     </a>
-
+    
                     <b class="price">19.99€</b>
-
+    
                     <button class="clickable-button buy">
                         Pridať do košíka <i class="fa fa-solid fa-shopping-cart"></i>
                     </button>
                 </div>
             </template>
-
 
             <div class="auto-grid" id="product-list-container"></div>
 

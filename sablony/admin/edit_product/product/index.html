@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" type="text/css" href="./../../../global-css/header.css">
+    <link rel="stylesheet" type="text/css" href="./../../../global-css/nav.css">
+    <link rel="stylesheet" type="text/css" href="./../../../global-css/document.css">
+    <link rel="stylesheet" type="text/css" href="./../../../global-css/layout.css">
+    <link rel="stylesheet" type="text/css" href="./../../../global-css/clickable-button.css">
+    <link rel="stylesheet" type="text/css" href="./../../../global-css/hamburgers.css"> <!--src: https://github.com/jonsuh/hamburgers-->
+    <link rel="stylesheet" type="text/css" href="./css/content.css">
+    <title>E-SHOP</title>
+    <script src="https://kit.fontawesome.com/4e34836926.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <button class="hamburger hamburger--emphatic" type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+        </button>
+
+        <div class="logo">
+            <a href="./../../../index.html"><img src="../../../assets/logo/logo.png" alt="Logo" ></a>
+        </div>
+        
+        <div class="search">
+            <form>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Hľadaj">
+                <button></button>
+            </form>
+        </div>
+        
+        <span class="icons">
+            <a href="./../../../shopping-cart/index.html"><i class="fa fa-solid fa-shopping-cart"></i></a>
+            <a href="./../../../auth/login.html"><i class="fa fa-solid fa-user"></i></a>
+        </span>
+    </header>
+
+    <div class="content-container">
+        <nav class="primary-navigation">
+            <div>
+                <a class="link" href="./../../add_product/add.html">Pridať produkt</a>
+            </div>
+            <div>
+                <a class="link" href="./../index.html">Upraviť produkt</a>
+            </div>
+           
+        </nav>
+
+        <main>
+        
+            <h2>Upraviť produkt</h2>
+           
+            <div class="product-info">
+                <section class="carousel">
+                    <div class="carousel-active-element">
+                        <div class="carousel-item-container">
+                            <img class="image" alt="product" src="./assets/img_01.jpg">
+                        </div>
+                        <div class="carousel-item-container to-right">
+                            <img class="image" alt="product" src="./assets/img_02.avif">
+                        </div>
+                        <div class="carousel-item-container to-right">
+                            <img class="image" alt="product" src="./assets/img_03.jpg">
+                        </div>
+                        <div class="carousel-item-container to-right">
+                            <img class="image" alt="product" src="./assets/img_04.jpg">
+                        </div>
+                        <div class="carousel-item-container to-right">
+                            <img class="image" alt="product" src="./assets/img_05.avif">
+                        </div>
+                    </div>
+                    <span class="swipe left"><i class="fa-solid fa-circle-left"></i></span>
+                    <span class="swipe right"><i class="fa-solid fa-circle-right"></i></span>
+                </section>
+    
+                <section class="product-details">
+                    <ul>
+                        <li>
+                            <label for="product-name">Názov produktu:</label>
+                            <input type="text" id="product-name" name="product-name" value="Kúzelníčka z Arandoru" required>
+                        </li>
+                        <li>
+                            <label for="product-size">Autor:</label>
+                            <input type="text" id="product-size" name="product-size" value="Emilia Hawthorne" required>
+                        </li>
+                        <li>
+                            <label for="product-height">Žáner:</label>
+                            <input type="text" id="product-height" name="product-height" value="Fantazy" required>
+                        </li>
+                        <li>
+                            <label for="product-weight">Vydavateľstvo:</label>
+                            <input type="text" id="product-weight" name="product-weight" value="Moonlit Press" required>
+                        </li>
+                        <li>
+                            <label for="product-age">Rok vydania:</label>
+                            <input type="text" id="product-age" name="product-age" value="2022" required>
+                        </li>
+                        <li>
+                            <label for="product-description">Detailný popis:</label>
+                            <textarea id="product-description" name="product-description" rows="4" required>
+                                V mystickej krajine Arandor, kde draky lietajú na nebi a kúzla pulzujú zeme, mladá kúzelníčka menom Elara objaví skrytú moc v sebe, ktorá by mohla zmeniť osud jej sveta. Ako sa vydáva na nebezpečnú cestu, aby ovládla svoje schopnosti, stretáva zvláštne stvorenia, starodávne proroctvá a temnú silu, ktorá hrozí zničiť všetko, čo má rada. S pomocou nepravdepodobných spojencov a múdreho starca musí Elara čeliť svojim obavám a prijať svoj osud, kým nie je príliš neskoro. "Kúzelníčka z Arandoru" je epický príbeh o odvahe, priateľstve a vytrvalosti nádeje v tvári tmy.</textarea>
+                        </li>
+                        <li>
+                            <label for="product-stock">Na sklade:</label>
+                            <input type="text" id="product-stock" name="product-stock" value="> 10ks" required>
+                        </li>
+                        <li>
+                            <label for="product-price">Cena:</label>
+                            <input type="text" id="product-price" name="product-price" value="25.69€" required>
+                        </li>
+                        <li>
+                            <label for="product-image-upload">Pridať obrázok:</label>
+                            <input type="file" id="product-image-upload" name="product-image-upload" accept="image/*">
+                        </li>
+                    </ul>
+                    
+                    
+
+                    <button style="padding: 1rem 2rem; font-size: 1.2rem; margin-top: 2rem;" class="clickable-button">
+                        Uložiť zmeny
+                    </button>
+                    <button style="padding: 1rem 2rem; font-size: 1.2rem; margin-top: 2rem;" class="clickable-button low-prio delete">
+                        Vymazať produkt
+                    </button>
+                </section>
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script src="./index.js"></script>
+    <script src="../menucko.js"></script>
+</body>
+</html>

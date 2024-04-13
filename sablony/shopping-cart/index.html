@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/header.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/nav.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/document.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/layout.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/clickable-button.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/hamburgers.css') }}"> <!--src: https://github.com/jonsuh/hamburgers-->
-    <link href="{{ asset('/css/cart/content.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../global-css/header.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/document.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/clickable-button.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/hamburgers.css"> <!--src: https://github.com/jonsuh/hamburgers-->
+    <link rel="stylesheet" type="text/css" href="./css/content.css">
     <title>E-SHOP</title>
     <script src="https://kit.fontawesome.com/4e34836926.js" crossorigin="anonymous"></script>
 </head>
@@ -22,7 +22,7 @@
         </button>
 
         <div class="logo">
-            <a href="{{ route('home') }}"><img src="{{ asset('/images/logo.png') }}" alt="Logo" ></a>
+            <a href="../index.html"><img src="../assets/logo/logo.png" alt="Logo" ></a>
         </div>
         
         <div class="search">
@@ -69,7 +69,7 @@
             <div id="items" style="display: grid; gap: 1rem;">
                 <template id="cart-item-template">
                     <div class="cart-item">
-                        <img alt="cart-item" src="{{ asset('/images/cart/image_01.jpeg') }}">
+                        <img alt="cart-item" src="./assets/image_01.jpeg">
                         <p>
                             <a href="../product/index.html">Oznacenie produktu</a>
                         </p>
@@ -97,7 +97,7 @@
     </main>
 
 
-    <script src="{{ asset('/js/cart/index.js') }}" ></script>
-    <script src="{{ asset('js/menucko.js')}}"></script>
+    <script src="./index.js"></script>
+    <script src="../menucko.js"></script>
 </body>
 </html>

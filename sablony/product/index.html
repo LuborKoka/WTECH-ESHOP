@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/header.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/nav.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/document.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/layout.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/clickable-button.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/hamburgers.css') }}"> <!--src: https://github.com/jonsuh/hamburgers-->
-    <link href="{{ asset('/css/product/content.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../global-css/header.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/document.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/clickable-button.css">
+    <link rel="stylesheet" type="text/css" href="../global-css/hamburgers.css"> <!--src: https://github.com/jonsuh/hamburgers-->
+    <link rel="stylesheet" type="text/css" href="./css/content.css">
     <title>E-SHOP</title>
     <script src="https://kit.fontawesome.com/4e34836926.js" crossorigin="anonymous"></script>
 </head>
@@ -22,7 +22,7 @@
         </button>
 
         <div class="logo">
-            <a href="{{ route('home') }}"><img src="{{ asset('/images/logo.png') }}" alt="Logo" ></a>
+            <a href="../index.html"><img src="../assets/logo/logo.png" alt="Logo" ></a>
         </div>
         
         <div class="search">
@@ -34,7 +34,7 @@
         </div>
         
         <span class="icons">
-            <a href="{{ route('cart') }}"><i class="fa fa-solid fa-shopping-cart"></i></a>
+            <a href="../shopping-cart/index.html"><i class="fa fa-solid fa-shopping-cart"></i></a>
             <a href="../auth/login.html"><i class="fa fa-solid fa-user"></i></a>
         </span>
     </header>
@@ -69,19 +69,19 @@
                 <section class="carousel">
                     <div class="carousel-active-element">
                         <div class="carousel-item-container">
-                            <img class="image" alt="product" src="{{ asset('/images/product/img_01.jpg') }}">
+                            <img class="image" alt="product" src="./assets/img_01.jpg">
                         </div>
                         <div class="carousel-item-container to-right">
-                            <img class="image" alt="product" src="{{ asset('/images/product/img_02.avif') }}">
+                            <img class="image" alt="product" src="./assets/img_02.avif">
                         </div>
                         <div class="carousel-item-container to-right">
-                            <img class="image" alt="product" src="{{ asset('/images/product/img_03.jpg') }}">
+                            <img class="image" alt="product" src="./assets/img_03.jpg">
                         </div>
                         <div class="carousel-item-container to-right">
-                            <img class="image" alt="product" src="{{ asset('/images/product/img_04.jpg') }}">
+                            <img class="image" alt="product" src="./assets/img_04.jpg">
                         </div>
                         <div class="carousel-item-container to-right">
-                            <img class="image" alt="product" src="{{ asset('/images/product/img_05.avif') }}">
+                            <img class="image" alt="product" src="./assets/img_05.avif">
                         </div>
                     </div>
                     <span class="swipe left"><i class="fa-solid fa-circle-left"></i></span>
@@ -128,7 +128,7 @@
     </div>
 
 
-    <script src="{{ asset('/js/product/index.js') }}"></script>
-    <script src="{{ asset('/js/index.js') }}"></script>
+    <script src="./index.js"></script>
+    <script src="../menucko.js"></script>
 </body>
 </html>

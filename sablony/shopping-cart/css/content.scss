@@ -1,0 +1,99 @@
+@import '../../global-css/colors.scss';
+
+
+main {
+    padding: 3rem 2rem;
+
+    h2 {
+        border-bottom: 2px solid $text;
+        padding-bottom: 1rem;
+        padding-inline-start: 1rem;
+    }
+
+    section {
+        padding-top: 2rem;
+    }
+
+    .cart-item {
+        position: relative;
+        display: grid;
+        gap: 1rem;
+        padding: 1rem 2rem;
+        align-items: center;
+        grid-template-columns: auto 1fr auto auto auto;
+        background-image: linear-gradient(to right, rgba($text, .05), transparent);
+
+        a {
+            color: $text;
+
+        }
+
+        img {
+            max-width: clamp(30px, 15vw, 100px)
+        }
+
+        input {
+            border: none;
+            outline: none;
+            box-shadow: 0 0 3px $text;
+            border-radius: 3px;
+            padding: .25rem .5rem;
+            max-width: 3.25rem;
+        }
+
+        i {
+            position: absolute;
+            top: 0;
+            right: 1rem;
+            z-index: 1;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color .2s;
+        }
+    }
+}
+
+#items {
+    padding-bottom: 1rem;
+    border-bottom: 2px solid $text;
+}
+
+@media (hover: hover) {
+    .cart-item i:hover {
+        color: rgb(244, 33, 0)
+    }
+}
+
+@media (hover: none) {
+    .cart-item i {
+        color: rgb(244, 33, 0)
+    }
+}
+
+@media screen and (min-width: 769px) {
+    aside {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    main {
+        padding: 1rem .5rem;
+
+        .cart-item {
+            padding: .25rem .5rem;
+            gap: .5rem;
+            grid-template-columns: auto 1fr auto auto;
+
+
+            i {
+                top: -.5rem;
+            }
+
+            p:last-of-type {
+                display: none;
+            }
+        }
+    }
+}

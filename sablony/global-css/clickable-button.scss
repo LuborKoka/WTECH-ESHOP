@@ -1,0 +1,37 @@
+@import '../global-css/colors.scss';
+
+.clickable-button {
+    background: none;
+    border: none;
+    border-radius: 4px;
+    background-color: $text;
+    width: 100%;
+    color: $bg;
+    cursor: pointer;
+    transition: box-shadow .2s opacity .2s;
+    text-decoration: none;
+
+    a {
+        color: $bg;
+        text-decoration: none;
+    }
+
+    &:disabled {
+        opacity: .7;
+        cursor: not-allowed;
+    }
+
+    &.low-prio {
+        border: 1px solid $text;
+        background-color: transparent;
+        color: $text !important;
+        text-decoration: none;
+    }
+}
+
+
+@media (hover:hover) {
+    .clickable-button:hover {
+        box-shadow: 0 0 5px 1px rgba($text, .4);
+    }
+}
