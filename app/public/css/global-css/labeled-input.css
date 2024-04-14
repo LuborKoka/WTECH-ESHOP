@@ -1,0 +1,60 @@
+.labeled-input {
+  position: relative;
+  border-radius: 3px;
+  padding-top: 1rem;
+}
+.labeled-input input {
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  color: #000B3A;
+  width: 100%;
+  transition: box-shadow 0.3s;
+}
+.labeled-input input:focus + label, .labeled-input input:valid + label {
+  transform: translateY(-100%) translateX(-10%) scale(0.8);
+}
+.labeled-input label {
+  position: absolute;
+  left: 1rem;
+  bottom: 0.35rem;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.labeled-input.underlined {
+  overflow: hidden;
+}
+.labeled-input.underlined input {
+  background-color: transparent;
+}
+.labeled-input.underlined span {
+  position: absolute;
+  display: block;
+  inset: calc(100% - 1px) 0 0 0;
+  background-color: #000B3A;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in-out;
+}
+.labeled-input.underlined::after {
+  content: "";
+  position: absolute;
+  inset: calc(100% - 1px) 0 0 0;
+  background-color: rgba(0, 11, 58, 0.5);
+}
+.labeled-input.underlined input:focus ~ span, .labeled-input.underlined input:valid ~ span {
+  transform: translateX(0);
+}
+
+@media (hover: hover) {
+  .labeled-input.elevated input:hover, .labeled-input.elevated input:focus, .labeled-input.elevated input:valid {
+    box-shadow: 0 0 5px rgba(0, 11, 58, 0.5);
+  }
+}
+@media (hover: none) {
+  .labeled-input.elevated {
+    box-shadow: 0 0 5px rgba(0, 11, 58, 0.5);
+  }
+}
+
+/*# sourceMappingURL=labeled-input.css.map */
