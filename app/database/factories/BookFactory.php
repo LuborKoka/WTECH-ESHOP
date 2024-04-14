@@ -15,6 +15,7 @@ class BookFactory extends Factory
             'images' => null,
             'title' => $this->faker->sentence,
             'publisher' => $this->faker->company,
+            'description' => $this->faker->paragraph,
             'released_at' => $this->faker->dateTimeBetween('-5 years', 'now'),
             'stock' => $this->faker->numberBetween(0, 100),
             'cost' => $this->faker->randomFloat(2, 0, 100),
