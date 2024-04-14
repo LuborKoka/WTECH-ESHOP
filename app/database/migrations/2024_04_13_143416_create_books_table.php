@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->text('images')->nullable();
-            $table->text('title');
+            $table->text('title')->unique();
             $table->text('description');
             $table->string('publisher', 30);
             $table->timestampTZ('released_at')->default(DB::raw('NOW()'));
