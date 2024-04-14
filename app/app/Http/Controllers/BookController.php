@@ -33,8 +33,17 @@ class BookController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display all books.
      */
+
+    public function showAll() {
+        return view('pages/home');
+    }
+
+    /**
+     *  Display a certain book
+     */
+
     public function show(Book $book)
     {
         //
