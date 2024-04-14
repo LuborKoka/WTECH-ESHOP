@@ -1,4 +1,4 @@
-@extends('layouts.main-layout', ['title' => 'E-SHOP'])
+@extends('layouts.main-layout', ['title' => $title])
 
 @section('head')
 <link href="{{ asset('/css/content.css') }}" rel="stylesheet">

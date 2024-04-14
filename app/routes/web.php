@@ -16,12 +16,9 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', 'App\Http\Controllers\BookController@showAll')->name('home');
 
+Route::get('/genre', 'App\Http\Controllers\BookController@showGenreBooks')->name('genre');
+
 Route::get('/book', 'App\Http\Controllers\BookController@show')->name('book');
-
-
-Route::get('/product', function () {
-    return view('product');
-})->name('product');
 
 Route::get('/cart', function () {
     return view('cart');
