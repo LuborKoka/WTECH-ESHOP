@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
+use Illuminate\Http\Request;
+
 
 class BookController extends Controller
 {
@@ -37,16 +39,20 @@ class BookController extends Controller
      */
 
     public function showAll() {
-        return view('pages/home');
+        $books = Book::all();
+        return view('pages/home', ['books' => $books]);
     }
 
     /**
      *  Display a certain book
      */
 
-    public function show(Book $book)
+    public function show(Request $request)
     {
-        //
+        $name = urldecode($request->query('name'));
+        $book = Book::where('title', $name)->first();
+
+        return view('pages.book', ['book' => $book]);
     }
 
     /**

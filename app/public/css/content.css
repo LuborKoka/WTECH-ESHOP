@@ -1,7 +1,7 @@
 .content-container main {
     padding: 2rem 1rem;
   }
-  
+
   .sort-by-header {
     border-bottom: 1px solid rgba(0, 11, 58, 0.3);
     padding: 0.5rem 1rem;
@@ -21,7 +21,7 @@
     background-color: #E9E9EE;
     border-bottom: 3px solid #000B3A;
   }
-  
+
   .card {
     transition: transform 0.5s, box-shadow 0.5s;
     display: grid;
@@ -40,15 +40,16 @@
     padding: 0.5rem 1rem;
     max-width: 200px;
     justify-self: center;
+    text-align: center;
   }
-  
+
   .auto-grid {
     padding-top: 2rem;
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   }
-  
+
   @media (hover: none) {
     .card {
       background-image: linear-gradient(rgba(0, 11, 58, 0.03) 1%, 10%, transparent 30%);
@@ -63,6 +64,5 @@
       transform: translateY(-50%);
     }
   }
-  
+
   /*# sourceMappingURL=content.css.map */
-  

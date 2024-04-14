@@ -1,4 +1,4 @@
-@props(['delete' => false, 'lowPrio' => false, 'styles' => '', 'id' => null, 'onclick' => null])
+@props(['delete' => false, 'lowPrio' => false, 'buy' => false, 'styles' => null, 'id' => null, 'onclick' => null])
 
 @php
     $classes = [];
@@ -8,9 +8,12 @@
     if ($lowPrio) {
         $classes[] = 'low-prio';
     }
+    if ($buy) {
+        $classes[] = 'buy';
+    }
     $classAttributes = implode(' ', $classes);
 @endphp
 
-<div class="clickable-button {{ $classAttributes }}" id="{{ $id }}" style="{{ $styles }}" onclick="{{ $onclick }}">
+<div class="clickable-button {{ $classAttributes }}" @if($id !== null) id="{{ $id }}" @endif @if($styles !== null) style="{{ $styles }}" @endif @if($onclick !== null) onclick="{{ $onclick }}" @endif>
      {{ $slot }}
 </div>

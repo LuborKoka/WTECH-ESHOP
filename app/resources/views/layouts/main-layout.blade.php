@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="sk">
     <head>
-        @include('includes.head', ['title' => 'E-SHOP'])
+        @include('includes.head', ['title' => $title])
         @yield('head')
     </head>
 

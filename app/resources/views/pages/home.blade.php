@@ -1,7 +1,6 @@
-@extends('layouts.main-layout')
+@extends('layouts.main-layout', ['title' => 'E-SHOP'])
 
 @section('head')
-<script src="https://kit.fontawesome.com/4e34836926.js" crossorigin="anonymous"></script>
 <link href="{{ asset('/css/content.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/popup.css') }}" rel="stylesheet">
 @stop
@@ -21,9 +20,9 @@
     </div>
 
     <div class="auto-grid" id="product-list-container">
-        @for ($i = 0; $i < 15; $i++)
-            @include('components/product-card')
-        @endfor
+        @foreach ($books as $book)
+            <x-product-card :book="$book" />
+        @endforeach
     </div>
 
     <div class="filter-window-framefix">

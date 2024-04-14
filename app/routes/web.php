@@ -16,6 +16,8 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', 'App\Http\Controllers\BookController@showAll')->name('home');
 
+Route::get('/book', 'App\Http\Controllers\BookController@show')->name('book');
+
 
 Route::get('/product', function () {
     return view('product');

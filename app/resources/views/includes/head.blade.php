@@ -6,5 +6,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('/css/layouts/layout.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/css/global-css/clickable-button.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/css/global-css/hamburgers.css') }}"> <!--src: https://github.com/jonsuh/hamburgers-->
+<script src="https://kit.fontawesome.com/4e34836926.js" crossorigin="anonymous"></script>
 <title>{{ $title }}</title>
 

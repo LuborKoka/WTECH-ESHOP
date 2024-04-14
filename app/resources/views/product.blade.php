@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/header.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/nav.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/document.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/layout.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/clickable-button.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/hamburgers.css') }}"> <!--src: https://github.com/jonsuh/hamburgers-->
-    <link href="{{ asset('/css/product/content.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/product/content.css') }}" >
     <title>E-SHOP</title>
     <script src="https://kit.fontawesome.com/4e34836926.js" crossorigin="anonymous"></script>
 </head>
@@ -24,7 +24,7 @@
         <div class="logo">
             <a href="{{ route('home') }}"><img src="{{ asset('/images/logo.png') }}" alt="Logo" ></a>
         </div>
-        
+
         <div class="search">
             <form>
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -32,7 +32,7 @@
                 <button></button>
             </form>
         </div>
-        
+
         <span class="icons">
             <a href="{{ route('cart') }}"><i class="fa fa-solid fa-shopping-cart"></i></a>
             <a href="../auth/login.html"><i class="fa fa-solid fa-user"></i></a>
@@ -62,9 +62,9 @@
         </nav>
 
         <main>
-        
+
             <h2>Kúzelníčka z Arandoru</h2>
-           
+
             <div class="product-info">
                 <section class="carousel">
                     <div class="carousel-active-element">
@@ -87,7 +87,7 @@
                     <span class="swipe left"><i class="fa-solid fa-circle-left"></i></span>
                     <span class="swipe right"><i class="fa-solid fa-circle-right"></i></span>
                 </section>
-    
+
                 <section class="product-details">
                     <ul>
                         <li>
@@ -103,11 +103,11 @@
                             <b>Rok vydania</b>: 2022
                         </li>
                         <li>
-                            <b>Detailny popis</b>: 
+                            <b>Detailny popis</b>:
                             V mystickej krajine Arandor, kde draky lietajú na nebi a kúzla pulzujú zeme, mladá kúzelníčka menom Elara objaví skrytú moc v sebe, ktorá by mohla zmeniť osud jej sveta. Ako sa vydáva na nebezpečnú cestu, aby ovládla svoje schopnosti, stretáva zvláštne stvorenia, starodávne proroctvá a temnú silu, ktorá hrozí zničiť všetko, čo má rada. S pomocou nepravdepodobných spojencov a múdreho starca musí Elara čeliť svojim obavám a prijať svoj osud, kým nie je príliš neskoro. "Kúzelníčka z Arandoru" je epický príbeh o odvahe, priateľstve a vytrvalosti nádeje v tvári tmy.
                         </li>
-                    </ul> 
-                    
+                    </ul>
+
                     <div style="display: flex; justify-content: space-between; padding-top: 1rem;">
                         <span>
                             Na sklade:  <strong>> 10ks</strong>
