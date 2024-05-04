@@ -15,12 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('email', 320)->unique();
             $table->string('password', 80);
-            $table->string('first_name', 20);
-            $table->string('last_name', 25);
-            $table->text('address');
-            $table->string('zipcode', 5);
-            $table->string('city', 35);
-            $table->string('phone_number', 13);
+            $table->string('name', 20);
             $table->timestampTZ('created_at')->default(DB::raw('NOW()'));
             $table->timestampTZ('updated_at')->default(DB::raw('NOW()'));
         });
