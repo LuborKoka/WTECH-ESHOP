@@ -67,7 +67,7 @@
     </form>
 
     <p class="alternative">Ešte nemáte účet? <a class="link" id="plink" href="{{ route('register') }}">Zaregistrovať sa</a></p>
-    <p class="alternative"><a class="link" id="plink" href="../admin/add_product/add.html">Prihlásiť sa</a> ako Administrátor </p>
+    <p class="alternative"><a class="link" id="plink" href="{{ route('add') }}">Prihlásiť sa</a> ako Administrátor </p>
 
 </body>
 </html>

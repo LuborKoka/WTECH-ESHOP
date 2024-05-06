@@ -29,12 +29,21 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
+Route::post('/add', 'App\Http\Controllers\BookController@store')->name('book.store');
+
+
 Route::get('/', 'App\Http\Controllers\BookController@showAll')->name('home');
 
 Route::get('/genre', 'App\Http\Controllers\BookController@showGenreBooks')->name('genre');
 
 Route::get('/book', 'App\Http\Controllers\BookController@show')->name('book');
 
+
+
 Route::get('/cart', function () {
     return view('cart');
 })->name('cart');
+
+Route::get('/add', function () {
+    return view('admin.add');
+})->name('add');

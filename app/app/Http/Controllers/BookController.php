@@ -32,7 +32,21 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        //
+        $book = new Book();
+        $book->title = $request->input('title');
+        $book->description = $request->input('description');
+        $book->publisher = $request->input('publisher');
+        $book->released_at = $request->input('released_at');
+        $book->stock = $request->input('stock');
+        $book->cost = $request->input('cost');
+        $book->genre_id = $request->input('genre_id');
+        $book->author_id = $request->input('author_id');
+
+        $book->save();
+
+        return redirect()->route('add');
+
+    
     }
 
     /**
