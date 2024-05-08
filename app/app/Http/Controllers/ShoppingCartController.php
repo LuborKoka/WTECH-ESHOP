@@ -73,14 +73,34 @@ class ShoppingCartController extends Controller
      */
 
     public function deleteItem(Request $request) {
-        $item_id = $request->input('item_id');
-        $cart_id = $request->input('cart_id');
+        $id = $request->input('id');
 
-        CartItem::where('book_id', $item_id)
-            ->where('shopping_cart_id', $cart_id)
-            ->delete();
+        CartItem::find($id)->delete();
 
         return response()->noContent();
+    }
+
+    /**
+     * Update item count
+     */
+
+    public function updateItem(Request $request) {
+        $id = $request->input('id');
+        $count = $request->input('count');
+
+        $item = CartItem::find($id);
+
+        if ( $count <= 0 ) {
+            $item->delete();
+            return response()->noContent();
+        }
+
+        if ( $item ) {
+            $item->count = $count;
+            $item->save();
+        }
+
+        return $item;
     }
 
     /**

@@ -2,8 +2,8 @@ window.ShoppingCart = {
     csrfToken: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
 
 
-    removeItem: function(cartId, itemId) {
-        fetch(`/cart/item?item_id=${itemId}&cart_id=${cartId}`, {
+    removeItem: function(cartItemId) {
+        fetch(`/cart/item?id=${cartItemId}`, {
             method: 'DELETE',
             headers: {
                 'X-CSRF-TOKEN': this.csrfToken,
@@ -11,9 +11,29 @@ window.ShoppingCart = {
             }
         })
         .then(r => {
-            console.log(r)
             if ( r.status === 204 ) {
-                this.removeGuiItem(itemId)
+                this.removeGuiItem(cartItemId)
+            }
+        })
+        .catch()
+    },
+
+    changeItemCount: function(cartItemId, cost) {
+        const count = document.querySelector(`#item-${cartItemId} input`).valueAsNumber
+        fetch(`/cart/item?id=${cartItemId}&count=${count}`, {
+            method: 'PATCH',
+            headers: {
+                'X-CSRF-TOKEN': this.csrfToken,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(r => {
+            if ( r.status === 204 ) {
+                this.removeGuiItem(cartItemId)
+            }
+
+            if ( r.status === 200 ) {
+                this.updateGuiItem(cartItemId, count, cost)
             }
         })
         .catch()
@@ -21,6 +41,11 @@ window.ShoppingCart = {
 
     removeGuiItem: function(itemId) {
         document.querySelector(`#item-${itemId}`).remove()
+    },
+
+    updateGuiItem: function(cartItemId, count, cost) {
+        const resultCost = count*cost
+        document.querySelector(`#item-${cartItemId} p:last-of-type`).innerHTML = `${String(resultCost.toFixed(2))}€`
     }
 }
 

@@ -48,4 +48,5 @@ Route::get('/add', function () {
 
 Route::get('/cart', 'App\Http\Controllers\ShoppingCartController@show')->name('shopping-cart');
 Route::post('/cart/item', 'App\Http\Controllers\ShoppingCartController@addItem')->name('cart.add_item');
+Route::patch('/cart/item', 'App\Http\Controllers\ShoppingCartController@updateItem')->name('cart.update_item');
 Route::delete('/cart/item', 'App\Http\Controllers\ShoppingCartController@deleteItem')->name('cart.delete_item');
