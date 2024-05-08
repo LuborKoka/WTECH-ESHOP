@@ -8,7 +8,13 @@
 
     <b class="price">{{ $book->cost }}€</b>
 
-    <x-clickable-button buy>
-        Pridať do košíka <i class="fa fa-solid fa-shopping-cart"></i>
-    </x-clickable-button>
+    <form method="POST" action="{{ route('cart.add_item') }}" style='display: grid'>
+        @csrf
+        <input type='hidden' value='1' name='count'>
+        <input type='hidden' value="{{ $book->id }}" name='book_id'>
+
+        <x-clickable-button buy isButton>
+            Pridať do košíka <i class="fa fa-solid fa-shopping-cart"></i>
+        </x-clickable-button>
+    </form>
 </div>

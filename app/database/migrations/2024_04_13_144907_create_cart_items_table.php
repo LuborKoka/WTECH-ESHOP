@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('count');
             $table->foreignId('book_id')->constrained()->onDelete('cascade');
-            $table->foreignId('cart_id')->constrained('shopping_carts')->onDelete('cascade');
+            $table->foreignId('shopping_cart_id')->constrained('shopping_carts')->onDelete('cascade');
             $table->timestampTZ('created_at')->default(DB::raw('NOW()'));
             $table->timestampTZ('updated_at')->default(DB::raw('NOW()'));
         });

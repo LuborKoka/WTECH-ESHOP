@@ -40,10 +40,11 @@ Route::get('/book', 'App\Http\Controllers\BookController@show')->name('book');
 
 
 
-Route::get('/cart', function () {
-    return view('cart');
-})->name('cart');
 
 Route::get('/add', function () {
     return view('admin.add');
 })->name('add');
+
+
+Route::get('/cart', 'App\Http\Controllers\ShoppingCartController@show')->name('shopping-cart');
+Route::post('/cart/add_item', 'App\Http\Controllers\ShoppingCartController@addItem')->name('cart.add_item');

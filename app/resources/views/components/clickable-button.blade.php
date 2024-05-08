@@ -1,4 +1,4 @@
-@props(['delete' => false, 'lowPrio' => false, 'buy' => false, 'styles' => null, 'id' => null, 'onclick' => null])
+@props(['delete' => false, 'lowPrio' => false, 'buy' => false, 'isButton' => false, 'styles' => null, 'id' => null, 'onclick' => null])
 
 @php
     $classes = [];
@@ -12,8 +12,11 @@
         $classes[] = 'buy';
     }
     $classAttributes = implode(' ', $classes);
+
+    // Determine the element tag based on the value of isButton prop
+    $elementTag = $isButton ? 'button' : 'div';
 @endphp
 
-<div class="clickable-button {{ $classAttributes }}" @if($id !== null) id="{{ $id }}" @endif @if($styles !== null) style="{{ $styles }}" @endif @if($onclick !== null) onclick="{{ $onclick }}" @endif>
+<{{ $elementTag }} class="clickable-button {{ $classAttributes }}" @if($id !== null) id="{{ $id }}" @endif @if($styles !== null) style="{{ $styles }}" @endif @if($onclick !== null) onclick="{{ $onclick }}" @endif>
      {{ $slot }}
-</div>
+</{{ $elementTag }}>

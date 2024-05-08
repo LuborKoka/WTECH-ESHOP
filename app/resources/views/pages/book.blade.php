@@ -39,9 +39,15 @@
             </div>
 
 
-            <x-clickable-button style="padding: 1rem 2rem; font-size: 1.2rem; margin-top: 2rem;">
-                Pridať do košíka <i class="fa-solid fa-cart-shopping"></i>
-            </x-clickable-button>
+            <form method="POST" action="{{ route('cart.add_item') }}" style='display: grid'>
+                @csrf
+                <input type='hidden' value='1' name='count'>
+                <input type='hidden' value="{{ $book->id }}" name='book_id'>
+
+                <x-clickable-button buy isButton>
+                    Pridať do košíka <i class="fa fa-solid fa-shopping-cart"></i>
+                </x-clickable-button>
+            </form>
         </section>
     </div>
 </main>

@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\ShoppingCart;
+use App\Models\User;
+use App\Models\CartItem;
 use App\Http\Requests\StoreShoppingCartRequest;
 use App\Http\Requests\UpdateShoppingCartRequest;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 
 class ShoppingCartController extends Controller
 {
@@ -17,12 +21,52 @@ class ShoppingCartController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Find cart by user_id
      */
-    public function create()
-    {
-        //
+
+     public function find_cart(?User $user) {
+        if ($user === null) {
+            return ShoppingCart::create();
+        }
+
+        $cart = ShoppingCart::where('user_id', $user->id)->first();
+
+        if ($cart !== null) {
+            return $cart;
+        }
+
+        return ShoppingCart::create([
+            'user_id' => $user->id
+        ]);
     }
+
+
+
+    /**
+     * Add item to cart
+     */
+
+    public function addItem(Request $request) {
+        $book_id = $request->input('book_id');
+        $count = $request->input('count');
+
+        $user = null;
+
+        if (auth()->check()) {
+            $user = auth()->user();
+        }
+
+        $cart = $this->find_cart($user);
+
+        $item = CartItem::create([
+            'shopping_cart_id' => $cart->id,
+            'book_id' => $book_id,
+            'count' => $count
+        ]);
+
+        return redirect()->intended(RouteServiceProvider::CART);
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -35,9 +79,17 @@ class ShoppingCartController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ShoppingCart $shoppingCart)
+    public function show(Request $request)
     {
-        //
+        $user = null;
+
+        if (auth()->check()) {
+            $user = auth()->user();
+        }
+
+        $cart = $this->find_cart($user);
+
+        return view('pages.shopping-cart', ['cart' => $cart]);
     }
 
     /**

@@ -19,7 +19,7 @@
         <div class="logo">
             <a href="{{ route('home') }}"><img src="{{ asset('images/logo.png') }}" alt="Logo" ></a>
         </div>
-        
+
         <div class="search">
             <form>
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -27,7 +27,7 @@
                 <button></button>
             </form>
         </div>
-        
+
         <span class="icons">
             <a href="../shopping-cart/index.html"><i class="fa fa-solid fa-shopping-cart"></i></a>
             <i class="fa fa-solid fa-user"></i>

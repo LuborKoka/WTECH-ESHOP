@@ -18,7 +18,7 @@
     </div>
 
     <span class="icons">
-        <a href="./../../../shopping-cart/index.html"><i class="fa fa-solid fa-shopping-cart"></i></a>
+        <a href="{{ route('shopping-cart') }}"><i class="fa fa-solid fa-shopping-cart"></i></a>
         <a href="{{ route('login') }}"><i class="fa fa-solid fa-user"></i></a>
     </span>
 </header>
