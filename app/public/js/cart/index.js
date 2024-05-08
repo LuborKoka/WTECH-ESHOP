@@ -1,3 +1,32 @@
+window.ShoppingCart = {
+    csrfToken: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+
+
+    removeItem: function(cartId, itemId) {
+        fetch(`/cart/item?item_id=${itemId}&cart_id=${cartId}`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': this.csrfToken,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(r => {
+            console.log(r)
+            if ( r.status === 204 ) {
+                this.removeGuiItem(itemId)
+            }
+        })
+        .catch()
+    },
+
+    removeGuiItem: function(itemId) {
+        document.querySelector(`#item-${itemId}`).remove()
+    }
+}
+
+
+
+
 const items = []
 
 function RNG(min, max) {
@@ -11,7 +40,7 @@ class CartItem {
         this.id = id
 
         this.html = document.querySelector('#cart-item-template').content.firstElementChild.cloneNode(true)
-        
+
         const input = this.html.querySelector('input')
         input.value = count
         input.addEventListener('input', e => this.updateCost(e))
@@ -53,7 +82,7 @@ class CartItem {
 
     get totalPriceHtmlTag() {
         return this.html.querySelector('p:last-of-type')
-    } 
+    }
 
 
 }

@@ -11,7 +11,7 @@
     <section style="display: grid; gap: 2rem">
         <div id="items" style="display: grid; gap: 1rem;">
             @foreach($cart->cartItems as $item)
-                <x-cart-item :item="$item"/>
+                <x-cart-item :item="$item" :cartId="$cart->id"/>
             @endforeach
         </div>
 

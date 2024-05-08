@@ -69,6 +69,21 @@ class ShoppingCartController extends Controller
 
 
     /**
+     * Delete item from shopping cart
+     */
+
+    public function deleteItem(Request $request) {
+        $item_id = $request->input('item_id');
+        $cart_id = $request->input('cart_id');
+
+        CartItem::where('book_id', $item_id)
+            ->where('shopping_cart_id', $cart_id)
+            ->delete();
+
+        return response()->noContent();
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreShoppingCartRequest $request)
