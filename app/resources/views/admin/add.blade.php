@@ -37,11 +37,11 @@
 
     <div class="content-container">
         <nav class="primary-navigation">
-            <div>
-                <a class="link" href="./add.html">Pridať produkt</a>
+        <div>
+                <a class="link" href="{{ route('add') }}">Pridať produkt</a>
             </div>
             <div>
-                <a class="link" href="../edit_product/index.html">Upraviť produkt</a>
+                <a class="link" href="{{ route('edit') }}">Upraviť produkt</a>
             </div>
 
         </nav>

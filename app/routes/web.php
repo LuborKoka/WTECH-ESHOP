@@ -39,6 +39,13 @@ Route::get('/genre', 'App\Http\Controllers\BookController@showGenreBooks')->name
 Route::get('/book', 'App\Http\Controllers\BookController@show')->name('book');
 
 
+Route::get('/edit', 'App\Http\Controllers\BookController@showAllAdmin')->name('edit');
+
+Route::get('edit_book', 'App\Http\Controllers\BookController@showAdmin')->name('edit_book');
+
+Route::put('/edit_book', 'App\Http\Controllers\BookController@update')->name('book.update');
+
+Route::delete('/edit_book', 'App\Http\Controllers\BookController@destroy')->name('book.delete');
 
 
 Route::get('/add', function () {

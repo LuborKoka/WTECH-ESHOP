@@ -29,7 +29,8 @@ class UserFactory extends Factory
             'address' => $this->faker->address,
             'zipcode' => $this->faker->postcode,
             'city' => $this->faker->city,
-            'phone_number' => $this->faker->phoneNumber
+            'phone_number' => $this->faker->phoneNumber,
+            'is_admin' => false,
         ];
     }
 }

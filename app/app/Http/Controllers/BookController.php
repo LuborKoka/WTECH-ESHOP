@@ -72,6 +72,11 @@ class BookController extends Controller
         return view('pages/home', ['books' => $books, 'title' => 'E-SHOP', 'sort_by' => $sortBy]);
     }
 
+    public function showAllAdmin() {
+        $books = Book::all();
+        return view('admin/edit', ['books' => $books, 'title' => 'E-SHOP']);
+    }
+
 
     /**
      * Display all books from genre
@@ -110,6 +115,12 @@ class BookController extends Controller
 
         return view('pages.book', ['book' => $book, 'title' => $name]);
     }
+    public function showAdmin(Request $request) {
+        $name = urldecode($request->query('name'));
+        $book = Book::where('title', $name)->first();
+
+        return view('admin.edit_book', ['book' => $book, 'title' => $name]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -122,16 +133,35 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBookRequest $request, Book $book)
+    public function update(Request $request, Book $book)
     {
-        //
+        $name = urldecode($request->query('name'));
+        $book = Book::where('title', $name)->first();
+
+        $book->title = $request->input('title');
+        $book->description = $request->input('description');
+        $book->publisher = $request->input('publisher');
+        $book->released_at = $request->input('released_at');
+        $book->stock = $request->input('stock');
+        $book->cost = $request->input('cost');
+        $book->genre_id = $request->input('genre');
+        $book->author_id = $request->input('author');
+
+        $book->save();
+
+        return redirect()->route('edit');
+    
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Book $book)
+    public function destroy(Request $request, Book $book)
     {
-        //
-    }
+        $name = urldecode($request->query('name'));
+        $book = Book::where('title', $name)->first();
+
+        $book->delete();
+
+        return redirect()->route('edit');    }
 }
