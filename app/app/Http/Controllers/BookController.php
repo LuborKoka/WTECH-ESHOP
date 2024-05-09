@@ -52,25 +52,34 @@ class BookController extends Controller
      * Display all books.
      */
 
-    public function showAll(Request $request) {
-        $sortBy = $request->input('sort_by', 'default');
-        $books = null;
-        switch ($sortBy) {
-            case 'newest':
-                $books = Book::orderBy('released_at', 'desc')->get();
-                break;
-            case 'cheapest':
-                $books = Book::orderBy('cost')->get();
-                break;
-            case 'most_expensive':
-                $books = Book::orderBy('cost', 'desc')->get();
-                break;
-            default:
-                $books = Book::all();
-                break;
-        }
-        return view('pages/home', ['books' => $books, 'title' => 'E-SHOP', 'sort_by' => $sortBy]);
-    }
+     public function showAll(Request $request)
+     {
+         $sortBy = $request->input('sort_by', 'default');
+     
+         switch ($sortBy) {
+             case 'newest':
+                 $booksQuery = Book::orderBy('released_at', 'desc');
+                 break;
+             case 'cheapest':
+                 $booksQuery = Book::orderBy('cost');
+                 break;
+             case 'most_expensive':
+                 $booksQuery = Book::orderBy('cost', 'desc');
+                 break;
+             default:
+                 $booksQuery = Book::query();
+                 break;
+         }
+     
+         $books = $booksQuery->paginate(10); // Paginate the results, 10 items per page
+     
+         return view('pages/home', [
+             'books' => $books,
+             'title' => 'E-SHOP',
+             'sort_by' => $sortBy
+         ]);
+     }
+     
 
     public function showAllAdmin() {
         $books = Book::all();

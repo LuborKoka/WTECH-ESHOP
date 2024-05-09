@@ -1,0 +1,20 @@
+.pagination {
+    margin: 20px 0;
+}
+
+.pagination > li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+.pagination > .active > span {
+    background-color: #337ab7;
+    color: #fff;
+}

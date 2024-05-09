@@ -26,6 +26,11 @@
         @endforeach
     </div>
 
+    <div class="pagination-container">
+    {{ $books->links() }}
+</div>
+
+
     <div class="filter-window-framefix">
         <div class="filter-animation-frame">
             <div class="filter-window">
