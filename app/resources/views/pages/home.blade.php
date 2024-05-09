@@ -8,10 +8,11 @@
 @section('content')
 <main>
     <div class="sort-by-header">
-        <span class="active">Odporúčané</span>
-        <span>Najnovšie</span>
-        <span>Najlacnejšie</span>
-        <span>Najdrahšie</span>
+        <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'default']) }}" class="{{ request('sort_by') == 'default' ? 'active' : '' }}">Odporúčané</a>
+        <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'newest']) }}" class="{{ request('sort_by') == 'newest' ? 'active' : '' }}">Najnovšie</a>
+        <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'cheapest']) }}" class="{{ request('sort_by') == 'cheapest' ? 'active' : '' }}">Najlacnejšie</a>
+        <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'most_expensive']) }}" class="{{ request('sort_by') == 'most_expensive' ? 'active' : '' }}">Najdrahšie</a>
+
 
         <x-clickable-button styles="width: auto;" id="filter">
             <i class="fa-solid fa-filter"></i> Filter

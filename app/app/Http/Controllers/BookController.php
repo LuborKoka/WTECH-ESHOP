@@ -52,9 +52,24 @@ class BookController extends Controller
      * Display all books.
      */
 
-    public function showAll() {
-        $books = Book::all();
-        return view('pages/home', ['books' => $books, 'title' => 'E-SHOP']);
+    public function showAll(Request $request) {
+        $sortBy = $request->input('sort_by', 'default');
+        $books = null;
+        switch ($sortBy) {
+            case 'newest':
+                $books = Book::orderBy('released_at', 'desc')->get();
+                break;
+            case 'cheapest':
+                $books = Book::orderBy('cost')->get();
+                break;
+            case 'most_expensive':
+                $books = Book::orderBy('cost', 'desc')->get();
+                break;
+            default:
+                $books = Book::all();
+                break;
+        }
+        return view('pages/home', ['books' => $books, 'title' => 'E-SHOP', 'sort_by' => $sortBy]);
     }
 
 
@@ -64,9 +79,25 @@ class BookController extends Controller
     public function showGenreBooks(Request $request) {
         $name = urldecode($request->query('name'));
         $genre = Genre::where('name', $name)->first();
-        $books = Book::where('genre_id', $genre->id)->get();
+        $sortBy = $request->input('sort_by', 'default');
+        $books = null;
 
-        return view('pages.home', ['books' => $books, 'title' => $name]);
+        switch ($sortBy) {
+            case 'newest':
+                $books = Book::orderBy('released_at', 'desc')->where('genre_id', $genre->id)->get();
+                break;
+            case 'cheapest':
+                $books = Book::orderBy('cost')->where('genre_id', $genre->id)->get();
+                break;
+            case 'most_expensive':
+                $books = Book::orderBy('cost', 'desc')->where('genre_id', $genre->id)->get();
+                break;
+            default:
+                $books = Book::where('genre_id', $genre->id)->get();
+                break;
+        }
+
+        return view('pages.home', ['books' => $books, 'title' => $name, 'sort_by' => $sortBy]);
     }
 
     /**

@@ -48,7 +48,7 @@ class ShoppingCartController extends Controller
 
     public function addItem(Request $request) {
         $book_id = $request->input('book_id');
-        $count = $request->input('count');
+        $count = intval($request->input('count'));
 
         $user = null;
 
@@ -89,18 +89,34 @@ class ShoppingCartController extends Controller
         $count = $request->input('count');
 
         $item = CartItem::find($id);
+        $cartId = $item->shopping_cart_id;
 
         if ( $count <= 0 ) {
             $item->delete();
-            return response()->noContent();
-        }
-
-        if ( $item ) {
+        } else {
             $item->count = $count;
             $item->save();
         }
 
-        return $item;
+        $cart = ShoppingCart::find($cartId);
+        $cost = $this->calculateTotalCost($cart);
+
+        $data = [
+            'cost' => $cost,
+            'resultCount' => $count         //k celej funkcii bude treba pribalit check, ci neni viac v kosiku ako na sklade
+        ];
+
+        return response()->json($data);
+    }
+
+    public function calculateTotalCost(ShoppingCart $cart) {
+        $result = 0;
+
+        foreach( $cart->cartItems as $item) {
+            $result += $item->count * $item->book->cost;
+        };
+
+        return round($result, 2);
     }
 
     /**
@@ -124,7 +140,9 @@ class ShoppingCartController extends Controller
 
         $cart = $this->find_cart($user);
 
-        return view('pages.shopping-cart', ['cart' => $cart]);
+        $cost = $this->calculateTotalCost($cart);
+
+        return view('pages.shopping-cart', ['cart' => $cart, 'cost' => $cost]);
     }
 
     /**

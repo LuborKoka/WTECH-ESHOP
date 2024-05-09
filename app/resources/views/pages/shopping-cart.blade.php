@@ -15,7 +15,7 @@
             @endforeach
         </div>
 
-        <strong id="cart-total" style="display: flex; justify-content: flex-end; font-size: 1.2rem;"></strong>
+        <strong id="cart-total" style="display: flex; justify-content: flex-end; font-size: 1.2rem;">Zaplatiť celkom: {{ $cost }}€</strong>
 
         <div style="display: flex; justify-content: space-between; gap: 1rem;">
             <a style="padding: .75rem 1.5rem; width: auto;" class="clickable-button low-prio" href="{{ route('home') }}">
