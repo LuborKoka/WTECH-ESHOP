@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ShoppingCart;
 use App\Models\User;
 use App\Models\CartItem;
+use App\Models\Order;
 use App\Http\Requests\StoreShoppingCartRequest;
 use App\Http\Requests\UpdateShoppingCartRequest;
 use App\Providers\RouteServiceProvider;
@@ -24,7 +25,7 @@ class ShoppingCartController extends Controller
      * Find cart by user_id
      */
 
-     public function find_cart(?User $user) {
+    public function findCart(?User $user) {
         if ($user === null) {
             return ShoppingCart::create();
         }
@@ -56,7 +57,7 @@ class ShoppingCartController extends Controller
             $user = auth()->user();
         }
 
-        $cart = $this->find_cart($user);
+        $cart = $this->findCart($user);
 
         $item = CartItem::create([
             'shopping_cart_id' => $cart->id,
@@ -138,7 +139,7 @@ class ShoppingCartController extends Controller
             $user = auth()->user();
         }
 
-        $cart = $this->find_cart($user);
+        $cart = $this->findCart($user);
 
         $cost = $this->calculateTotalCost($cart);
 

@@ -22,7 +22,7 @@
                 <i style="padding-right: 5px; font-size: 1.2rem; transform: translateY(2.5px);" class="fa-solid fa-left-long"></i>Pokračovať v nákupe
             </a>
 
-            <a style="width: auto; padding: .75rem 1.5rem;" class="clickable-button" href="../payment/index.html">
+            <a style="width: auto; padding: .75rem 1.5rem;" class="clickable-button" href="{{ route('payment') }}">
                 Dokončiť objednávku<i style="padding-left: 5px; font-size: 1.2rem; transform: translateY(2.5px);" class="fa-solid fa-right-long"></i>
             </a>
 

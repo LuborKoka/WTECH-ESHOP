@@ -13,10 +13,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->text('address_addres');
+            $table->text('shipping_address');
             $table->string('zipcode', 5);
             $table->string('city', 35);
-            $table->string('status', 15)->default('pending');
+            $table->int('payment_method');
+            $table->int('shipping_method');
+            $table->string('first_name', 20);
+            $table->string('last_name', 20);
+            $table->string('email', 320);
+            $table->string('phone_number', 13);
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
             $table->timestampTZ('created_at')->default(DB::raw('NOW()'));
             $table->timestampTZ('updated_at')->default(DB::raw('NOW()'));

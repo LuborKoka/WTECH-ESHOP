@@ -50,3 +50,6 @@ Route::get('/cart', 'App\Http\Controllers\ShoppingCartController@show')->name('s
 Route::post('/cart/item', 'App\Http\Controllers\ShoppingCartController@addItem')->name('cart.add_item');
 Route::patch('/cart/item', 'App\Http\Controllers\ShoppingCartController@updateItem')->name('cart.update_item');
 Route::delete('/cart/item', 'App\Http\Controllers\ShoppingCartController@deleteItem')->name('cart.delete_item');
+
+Route::get('/payment', function() {return view('pages.payment');})->name('payment');
+Route::post('/payment', 'App\Http\Controllers\OrderController@create')->name('payment.create');

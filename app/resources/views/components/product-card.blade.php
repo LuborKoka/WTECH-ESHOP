@@ -13,7 +13,7 @@
         <input type='hidden' value='1' name='count'>
         <input type='hidden' value="{{ $book->id }}" name='book_id'>
 
-        <x-clickable-button buy isButton>
+        <x-clickable-button buy :type="'submit'">
             Pridať do košíka <i class="fa fa-solid fa-shopping-cart"></i>
         </x-clickable-button>
     </form>
