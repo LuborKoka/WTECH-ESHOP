@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class OrderController extends Controller
 {
@@ -20,9 +21,12 @@ class OrderController extends Controller
         //
     }
 
-    public function findCart(?User $user) {
+    public function findCart(?User $user, ?int $cartId = null) {
         if ($user === null) {
-            return ShoppingCart::create();
+            if ( $cartId == null ) {
+                return ShoppingCart::create();
+            }
+            return ShoppingCart::find($cartId);
         }
 
         $cart = ShoppingCart::where('user_id', $user->id)->first();
@@ -41,15 +45,15 @@ class OrderController extends Controller
      */
     public function create(Request $request) {
         $form = $request->input('form');
-        info($form);
+        $cartId = Cookie::get('shopping_cart_id');
 
         $user = null;
 
-        if (auth()->check()) {
+        if ( auth()->check() ) {
             $user = auth()->user();
         }
 
-        $cart = $this->findCart($user);
+        $cart = $this->findCart($user, $cartId);
 
         foreach($cart->cartItems as $item) {
             if ( $item->count > $item->book->stock ) {
@@ -85,6 +89,7 @@ class OrderController extends Controller
         }
 
         $cart->delete();
+        Cookie::forget('shopping_cart_id');
 
         return response()->json(['message' => 'Order created successfully'], 201);
 

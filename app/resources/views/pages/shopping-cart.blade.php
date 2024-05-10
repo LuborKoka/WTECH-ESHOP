@@ -33,4 +33,7 @@
 
 @section('scripts')
     <script src="{{ asset('/js/cart/index.js') }}" ></script>
+    <script>
+        localStorage.setItem('shoppingCartId', {{ $cart->id }});
+    </script>
 @stop

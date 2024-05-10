@@ -10,6 +10,7 @@ use App\Http\Requests\StoreShoppingCartRequest;
 use App\Http\Requests\UpdateShoppingCartRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class ShoppingCartController extends Controller
 {
@@ -25,9 +26,12 @@ class ShoppingCartController extends Controller
      * Find cart by user_id
      */
 
-    public function findCart(?User $user) {
+    public function findCart(?User $user, ?int $cartId = null) {
         if ($user === null) {
-            return ShoppingCart::create();
+            if ( !$cartId ) {
+                return ShoppingCart::create();
+            }
+            return ShoppingCart::find($cartId);
         }
 
         $cart = ShoppingCart::where('user_id', $user->id)->first();
@@ -48,24 +52,29 @@ class ShoppingCartController extends Controller
      */
 
     public function addItem(Request $request) {
-        $book_id = $request->input('book_id');
+        $bookId = $request->input('book_id');
+        $cartId = Cookie::get('shopping_cart_id');
         $count = intval($request->input('count'));
 
         $user = null;
 
-        if (auth()->check()) {
+        if ( auth()->check() ) {
             $user = auth()->user();
         }
 
-        $cart = $this->findCart($user);
+        $cart = $this->findCart($user, $cartId);
 
         $item = CartItem::create([
             'shopping_cart_id' => $cart->id,
-            'book_id' => $book_id,
+            'book_id' => $bookId,
             'count' => $count
         ]);
 
-        return redirect()->intended(RouteServiceProvider::CART);
+        if ( !auth()->check() ) {
+            Cookie::queue('shopping_cart_id', $cart->id, 30*24*30);
+        }
+
+        return redirect()->route('shopping-cart')->with('cart', $cart);
     }
 
 
@@ -131,15 +140,18 @@ class ShoppingCartController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request)
-    {
+    public function show(Request $request) {
+        $cart = $request->session()->get('cart');
         $user = null;
+        $cartId = Cookie::get('shopping_cart_id');
 
-        if (auth()->check()) {
+        if ( auth()->check() ) {
             $user = auth()->user();
         }
 
-        $cart = $this->findCart($user);
+        if (!$cart) {
+            $cart = $this->findCart($user, $cartId);
+        }
 
         $cost = $this->calculateTotalCost($cart);
 
