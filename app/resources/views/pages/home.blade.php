@@ -3,6 +3,7 @@
 @section('head')
 <link href="{{ asset('/css/content.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/popup.css') }}" rel="stylesheet">
+<link href="{{ asset('/css/pagination.css') }}" rel="stylesheet">
 @stop
 
 @section('content')
@@ -27,7 +28,7 @@
     </div>
 
     <div class="pagination-container">
-    {{ $books->links() }}
+    {{ $books->links('pagination::bootstrap-5') }}
 </div>
 
 
