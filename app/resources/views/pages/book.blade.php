@@ -50,7 +50,7 @@
                 </div>
 
 
-                <x-clickable-button buy isButton>
+                <x-clickable-button buy>
                     Pridať do košíka <i class="fa fa-solid fa-shopping-cart"></i>
                 </x-clickable-button>
             </form>
