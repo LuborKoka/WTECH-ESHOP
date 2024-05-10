@@ -72,7 +72,7 @@ main {
   }
   
   .product-details {
-    max-width: 40rem;
+    width: 20rem;
     padding: 0 1rem;
   }
   
@@ -105,7 +105,9 @@ main {
     }
   }
   
-  
+  ol, ul {
+    padding-left: 0rem;
+}
   .product-image img {
     max-width: 100%;
     max-height: 100%;

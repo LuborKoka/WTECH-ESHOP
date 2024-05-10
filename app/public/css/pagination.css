@@ -5,21 +5,20 @@
     color: #000B3A;
 }
 
-/* Customize pagination link colors */
 .page-link {
-    color: #000B3A; /* Change this to your desired color */
+    color: #000B3A;
 }
 
 .page-link:hover {
-    color: #000B3A; /* Change this to your desired hover color */
+    color: #000B3A;
 }
 
 .page-item.active .page-link {
     color: #ffffff;
     background-color: #000B3A;
-    border-color: #000B3A; /* Change this to your desired active link color */
+    border-color: #000B3A;
 }
 
 .page-item.disabled .page-link {
-    color: #000B3A; /* Change this to your desired color for disabled links */
+    color: #000B3A;
 }

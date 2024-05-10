@@ -38,10 +38,19 @@
             <div>
                 <a class="link" href="{{ route('add') }}">Pridať produkt</a>
             </div>
+
             <div>
                 <a class="link" href="{{ route('edit') }}">Upraviť produkt</a>
             </div>
-            
+
+            <form method="POST" id="login-form" action="{{ route('logout') }}">
+                @csrf
+                <div>
+                    <button type="submit" class="clickable-button">
+                        {{ __('Log Out') }}
+                    </button>
+                </div>
+            </form>
         </nav>
 
         <div class="auto-grid" id="product-list-container">

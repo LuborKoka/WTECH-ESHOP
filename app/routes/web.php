@@ -28,8 +28,22 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::post('/admin_login', [App\Http\Controllers\AdminAuthController::class, 'login']);
 
-Route::post('/add', 'App\Http\Controllers\BookController@store')->name('book.store');
+
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('/add', 'AdminController@index')->name('admin.add');
+    Route::post('/add', 'App\Http\Controllers\BookController@store')->name('book.store');
+    Route::get('/edit', 'App\Http\Controllers\BookController@showAllAdmin')->name('edit');
+    Route::get('edit_book', 'App\Http\Controllers\BookController@showAdmin')->name('edit_book');
+    Route::put('/edit_book', 'App\Http\Controllers\BookController@update')->name('book.update');
+    Route::delete('/edit_book', 'App\Http\Controllers\BookController@destroy')->name('book.delete');
+    
+    Route::get('/add', function () {
+        return view('admin.add');
+    })->name('add');
+});
+
 
 
 Route::get('/', 'App\Http\Controllers\BookController@showAll')->name('home');
@@ -39,18 +53,9 @@ Route::get('/genre', 'App\Http\Controllers\BookController@showGenreBooks')->name
 Route::get('/book', 'App\Http\Controllers\BookController@show')->name('book');
 
 
-Route::get('/edit', 'App\Http\Controllers\BookController@showAllAdmin')->name('edit');
-
-Route::get('edit_book', 'App\Http\Controllers\BookController@showAdmin')->name('edit_book');
-
-Route::put('/edit_book', 'App\Http\Controllers\BookController@update')->name('book.update');
-
-Route::delete('/edit_book', 'App\Http\Controllers\BookController@destroy')->name('book.delete');
-
-
-Route::get('/add', function () {
-    return view('admin.add');
-})->name('add');
+Route::get('/admin_login', function () {
+    return view('admin.admin_login');
+})->name('admin_login');
 
 
 Route::get('/cart', 'App\Http\Controllers\ShoppingCartController@show')->name('shopping-cart');

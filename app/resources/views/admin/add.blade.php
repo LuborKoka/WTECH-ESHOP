@@ -5,7 +5,6 @@
     @include('includes.head', ['title' => 'Login'])
     @yield('head')
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/admin/add_product/content.css') }}">
-
 </head>
 
 <body>
@@ -43,6 +42,16 @@
             <div>
                 <a class="link" href="{{ route('edit') }}">Upraviť produkt</a>
             </div>
+            <x-auth-session-status class="mb-4" :status="session('status')" />
+
+            <form method="POST" id="login-form" action="{{ route('logout') }}">
+                @csrf
+                <div>
+                    <button type="submit" class="clickable-button">
+                        {{ __('Log Out') }}
+                    </button>
+                </div>
+            </form>
 
         </nav>
 
@@ -56,7 +65,7 @@
                 <div class="product-info">
                     <section class="product-details">
                         <ul>
-                            <li>
+                            <li class="col-12">
                                 <label for="title">Názov produktu:</label>
                                 <input type="text" id="title" name="title" required>
                             </li>
@@ -100,8 +109,6 @@
 
                             </li>
                         </ul>
-
-
 
                         <button type="submit" style="padding: 1rem 2rem; font-size: 1.2rem; margin-top: 2rem;"
                             class="clickable-button">
