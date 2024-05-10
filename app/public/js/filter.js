@@ -2,8 +2,8 @@ window.Filter = {
     bar: document.querySelector('.filter-content .price-filter .bar'),
     rangeOne: document.getElementById('range-1'),
     rangeTwo: document.getElementById('range-2'),
-    minText: document.getElementById('price-min'),
-    maxText: document.getElementById('price-max'),
+    minText: document.getElementById('cost-min'),
+    maxText: document.getElementById('cost-max'),
 
     apply: function() {
         const form = this.createForm()
@@ -57,8 +57,8 @@ window.Filter = {
         })
 
         const form = {}
-        if ( min > this.rangeOne.min ) form.min_price = min
-        if ( max < this.rangeOne.max) form.max_price = max
+        if ( min > this.rangeOne.min ) form.min_cost = min
+        if ( max < this.rangeOne.max) form.max_cost = max
         if ( authors.length > 0 ) form.authors = authors
         if ( publishers.length > 0 ) form.publishers = publishers
 

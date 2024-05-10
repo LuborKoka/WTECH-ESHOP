@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Genre;
+use App\Models\Author;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 use Illuminate\Http\Request;
@@ -52,8 +53,7 @@ class BookController extends Controller
      * Display all books.
      */
 
-    public function showAll(Request $request)
-    {
+    public function showAll(Request $request) {
         $sortBy = $request->input('sort_by', 'default');
 
         switch ($sortBy) {
@@ -71,19 +71,33 @@ class BookController extends Controller
                 break;
         }
 
-        $publishers = [];
-        $authors = [];
+        //toto je pre vytvorenie filter guika
         $bookData = $booksQuery->get();
-        foreach ($bookData as $book) {
-            $publisher = $book->publisher;
-            if (!in_array($publisher, $publishers)) {
-                $publishers[] = $publisher;
-            }
-            $author = $book->author->name;
-            if (!in_array($author, $authors)) {
-                $authors[] = $author;
-            }
+        $filterData = $this->getFilterData($bookData);
+
+
+        $publishersFilter = $request->input('publishers', []);
+        if ( !empty($publishersFilter) ) {
+            $booksQuery->whereIn('publisher', $publishersFilter);
         }
+
+        $authorsFilter = $request->input('authors', []);
+        if ( !empty($authorsFilter) ) {
+            $booksQuery->whereHas('author', function ($query) use ($authorsFilter) {
+                $query->whereIn('name', $authorsFilter);
+            });
+        }
+
+        $minCost = $request->input('min_cost', 0);
+        if ( $minCost > 0 ) {
+            $booksQuery->where('cost', '>=', $minCost);
+        }
+
+        $maxCost = $request->input('max_cost', 0);
+        if ( $maxCost > 0 ) {
+            $booksQuery->where('cost', '<=', $maxCost);
+        }
+
 
         $books = $booksQuery->paginate(10);
 
@@ -91,8 +105,9 @@ class BookController extends Controller
             'books' => $books,
             'title' => 'E-SHOP',
             'sort_by' => $sortBy,
-            'authors' => $authors,
-            'publishers' => $publishers,
+            'authors' => $filterData['authors'],
+            'publishers' => $filterData['publishers'],
+            'maxCost' => $filterData['maxCost']
         ]);
      }
 
@@ -181,12 +196,42 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, Book $book)
-    {
+    public function destroy(Request $request, Book $book) {
         $name = urldecode($request->query('name'));
         $book = Book::where('title', $name)->first();
 
         $book->delete();
 
-        return redirect()->route('edit');    }
+        return redirect()->route('edit');
+    }
+
+    public function getFilterData($bookData) {
+        $publishers = [];
+        $authors = [];
+        $maxCost = 0;
+
+        foreach ($bookData as $book) {
+            $publisher = $book->publisher;
+            if (!in_array($publisher, $publishers)) {
+                $publishers[] = $publisher;
+            }
+
+            $author = $book->author->name;
+            if (!in_array($author, $authors)) {
+                $authors[] = $author;
+            }
+
+            if ($book->cost > $maxCost) {
+                $maxCost = $book->cost;
+            }
+        }
+
+        $maxCost = ceil($maxCost / 100) * 100;
+
+        return [
+            'maxCost' => $maxCost,
+            'authors' => $authors,
+            'publishers' => $publishers
+        ];
+    }
 }

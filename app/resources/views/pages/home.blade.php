@@ -71,16 +71,16 @@
                     <div>
                         <div class="price-filter">
                             <div>
-                                <input id="range-1" type="range" min="0" max="100" value="0" step="1">
-                                <input id="range-2" type="range" min="0" max="100" value="100" step="1">
+                                <input id="range-1" type="range" min="0" max="{{ $maxCost }}" value="0" step="1">
+                                <input id="range-2" type="range" min="0" max="{{ $maxCost }}" value="{{ $maxCost }}" step="1">
                                 <span class="fill"></span>
                                 <span class="bar"></span>
                             </div>
                         </div>
 
                         <div class="price-info">
-                            <span id="price-min">Min. cena: 0€</span>
-                            <span id="price-max">Max. cena: 100€</span>
+                            <span id="cost-min">Min. cena: 0€</span>
+                            <span id="cost-max">Max. cena: {{ $maxCost }}€</span>
                         </div>
                     </div>
                 </div>
