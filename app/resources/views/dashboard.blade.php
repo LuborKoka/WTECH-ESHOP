@@ -41,12 +41,12 @@
     <form method="POST" id="login-form" action="{{ route('logout') }}">
     @csrf
     <div>
-         <h3 style="padding-bottom: 10px;">You are logged in!</h3>
+         <h3 style="padding-bottom: 10px;">Si prihlásený!</h3>
     </div>
 
     <div>
         <button type="submit" class="clickable-button">
-            {{ __('Log Out') }}
+            {{ __('Odhlásiť sa') }}
         </button>
     </div>
     

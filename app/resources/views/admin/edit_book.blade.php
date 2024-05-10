@@ -29,8 +29,8 @@
         </div>
 
         <span class="icons">
-            <a href="./../../../shopping-cart/index.html"><i class="fa fa-solid fa-shopping-cart"></i></a>
-            <a href="./../../../auth/login.html"><i class="fa fa-solid fa-user"></i></a>
+            <a href="{{ route('shopping-cart') }}"><i class="fa fa-solid fa-shopping-cart"></i></a>
+            <a href="{{ route('login') }}"><i class="fa fa-solid fa-user"></i></a>
         </span>
     </header>
 
@@ -43,12 +43,12 @@
             <div>
                 <a class="link" href="{{ route('edit') }}">Upraviť produkt</a>
             </div>
-            
+
             <form method="POST" id="login-form" action="{{ route('logout') }}">
                 @csrf
                 <div>
                     <button type="submit" class="clickable-button">
-                        {{ __('Log Out') }}
+                        {{ __('Odhlásiť sa') }}
                     </button>
                 </div>
             </form>

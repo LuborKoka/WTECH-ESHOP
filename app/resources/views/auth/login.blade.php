@@ -28,8 +28,8 @@
         </div>
         
         <span class="icons">
-            <a href="../shopping-cart/index.html"><i class="fa fa-solid fa-shopping-cart"></i></a>
-            <i class="fa fa-solid fa-user"></i>
+            <a href="{{ route('shopping-cart') }}"><i class="fa fa-solid fa-shopping-cart"></i></a>
+            <a href="{{ route('login') }}"><i class="fa fa-solid fa-user"></i></a>
         </span>
     </header>
 
@@ -39,17 +39,17 @@
 
     <form method="POST" id="login-form" action="{{ route('login') }}">
         @csrf
-
+        <h2>Prihlásenie</h2>
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" :value="__('E-mail')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <x-input-label for="password" :value="__('Heslo')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
@@ -61,13 +61,11 @@
 
         <div class="flex items-center justify-end mt-4">
             <x-primary-button class="clickable-button">
-                {{ __('Log in') }}
+                {{ __('Prihlásiť sa') }}
             </x-primary-button>
         </div>
     </form>
 
     <p class="alternative">Ešte nemáte účet? <a class="link" id="plink" href="{{ route('register') }}">Zaregistrovať sa</a></p>
-    <p class="alternative"><a class="link" id="plink" href="{{ route('admin_login') }}">Prihlásiť sa</a> ako Administrátor </p>
-
 </body>
 </html>

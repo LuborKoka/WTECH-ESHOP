@@ -28,8 +28,8 @@
         </div>
         
         <span class="icons">
-            <a href="./../../shopping-cart/index.html"><i class="fa fa-solid fa-shopping-cart"></i></a>
-            <a href="./../../auth/login.html"><i class="fa fa-solid fa-user"></i></a>
+            <a href="{{ route('shopping-cart') }}"><i class="fa fa-solid fa-shopping-cart"></i></a>
+            <a href="{{ route('login') }}"><i class="fa fa-solid fa-user"></i></a>
         </span>
     </header>
 
@@ -47,7 +47,7 @@
                 @csrf
                 <div>
                     <button type="submit" class="clickable-button">
-                        {{ __('Log Out') }}
+                        {{ __('Odhlásiť sa') }}
                     </button>
                 </div>
             </form>

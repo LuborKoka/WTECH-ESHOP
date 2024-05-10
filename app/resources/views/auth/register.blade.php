@@ -28,32 +28,32 @@
         </div>
         
         <span class="icons">
-            <a href="../shopping-cart/index.html"><i class="fa fa-solid fa-shopping-cart"></i></a>
-            <i class="fa fa-solid fa-user"></i>
+            <a href="{{ route('shopping-cart') }}"><i class="fa fa-solid fa-shopping-cart"></i></a>
+            <a href="{{ route('login') }}"><i class="fa fa-solid fa-user"></i></a>
         </span>
     </header>
 
 <x-guest-layout>
     <form method="POST" id="login-form"action="{{ route('register') }}">
         @csrf
-
+        <h2>Registrácia</h2>
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for="name" :value="__('Meno:')" />
             <x-text-input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')"  />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" :value="__('E-mail:')" />
             <x-text-input id="email"  type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')"  />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <x-input-label for="password" :value="__('Heslo:')" />
 
             <x-text-input id="password" 
                             type="password"
@@ -65,7 +65,7 @@
 
         <!-- Confirm Password -->
         <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+            <x-input-label for="password_confirmation" :value="__('Zopakuj heslo:')" />
 
             <x-text-input id="password_confirmation"
                             type="password"
@@ -75,15 +75,13 @@
         </div>
 
         <div>
-            <a >
-                {{ __('Already registered?') }}
-            </a>
-
             <x-primary-button class="clickable-button">
-                {{ __('Register') }}
+                {{ __('Registrovať') }}
             </x-primary-button>
         </div>
     </form>
+    <p class="alternative">Už máte účet? <a class="link" id="plink" href="{{ route('login') }}">Prihlásiť sa</a></p>
+
 </x-guest-layout>
 
 </body>
