@@ -24,19 +24,28 @@
     border-bottom: 3px solid #000B3A;
   }
 
+
   .card {
     transition: transform 0.5s, box-shadow 0.5s;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
     gap: 1rem;
-    width: 100%;
+    width: calc(33.33% - 1rem);
+    max-width: 240px;
   }
   .card:hover {
     transform: scale(1.02);
     box-shadow: 0 0 5px rgba(0, 11, 58, 0.4);
   }
+  .card .link {
+    flex-grow: 1;
+    }
   .card a, .card .price {
     text-align: center;
+  }
+  .card .price {
+    margin-top: auto;
   }
   .card .buy {
     padding: 0.5rem 1rem;
@@ -45,11 +54,11 @@
     text-align: center;
   }
 
-  .auto-grid {
+  .auto-grid { /*uz to neni moc grid, ale co uz*/
     padding-top: 2rem;
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   }
 
   @media (hover: none) {
