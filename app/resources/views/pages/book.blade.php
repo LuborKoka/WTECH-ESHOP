@@ -2,6 +2,7 @@
 
 @section('head')
 <link rel="stylesheet" type="text/css" href="{{ asset('/css/product/content.css') }}" >
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/global-css/labeled-input.css') }}" >
 @stop
 
 @section('content')
@@ -41,10 +42,15 @@
 
             <form method="POST" action="{{ route('cart.add_item') }}" style='display: grid'>
                 @csrf
-                <input type='hidden' value='1' name='count'>
                 <input type='hidden' value="{{ $book->id }}" name='book_id'>
 
-                <x-clickable-button buy isButton>
+                <div class="labeled-input">
+                    <label for="book_count" style="transform: translateY(-100%) translateX(-10%) scale(0.8);">Počet</label>
+                    <input type="number" value="1" max="{{ $book->stock }}" name="count" required id="book_count">
+                </div>
+
+
+                <x-clickable-button buy>
                     Pridať do košíka <i class="fa fa-solid fa-shopping-cart"></i>
                 </x-clickable-button>
             </form>
