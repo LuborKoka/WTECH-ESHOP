@@ -99,7 +99,7 @@ class BookController extends Controller
         }
 
 
-        $books = $booksQuery->paginate(10);
+        $books = $booksQuery->paginate(10)->withQueryString();
 
         return view('pages/home', [
             'books' => $books,
@@ -126,24 +126,63 @@ class BookController extends Controller
         $genre = Genre::where('name', $name)->first();
         $sortBy = $request->input('sort_by', 'default');
         $books = null;
-
+    
         switch ($sortBy) {
             case 'newest':
-                $books = Book::orderBy('released_at', 'desc')->where('genre_id', $genre->id)->get();
+                $booksQuery = Book::where('genre_id', $genre->id)->orderBy('released_at', 'desc');
                 break;
             case 'cheapest':
-                $books = Book::orderBy('cost')->where('genre_id', $genre->id)->get();
+                $booksQuery = Book::where('genre_id', $genre->id)->orderBy('cost');
                 break;
             case 'most_expensive':
-                $books = Book::orderBy('cost', 'desc')->where('genre_id', $genre->id)->get();
+                $booksQuery = Book::where('genre_id', $genre->id)->orderBy('cost', 'desc');
                 break;
             default:
-                $books = Book::where('genre_id', $genre->id)->get();
+                $booksQuery = Book::where('genre_id', $genre->id);
                 break;
         }
+        
+    
+        //toto je pre vytvorenie filter guika
+        $bookData = $booksQuery->get();
+        $filterData = $this->getFilterData($bookData);
 
-        return view('pages.home', ['books' => $books, 'title' => $name, 'sort_by' => $sortBy]);
-    }
+
+        $publishersFilter = $request->input('publishers', []);
+        if ( !empty($publishersFilter) ) {
+            $booksQuery->whereIn('publisher', $publishersFilter);
+        }
+
+        $authorsFilter = $request->input('authors', []);
+        if ( !empty($authorsFilter) ) {
+            $booksQuery->whereHas('author', function ($query) use ($authorsFilter) {
+                $query->whereIn('name', $authorsFilter);
+            });
+        }
+
+        $minCost = $request->input('min_cost', 0);
+        if ( $minCost > 0 ) {
+            $booksQuery->where('cost', '>=', $minCost);
+        }
+
+        $maxCost = $request->input('max_cost', 0);
+        if ( $maxCost > 0 ) {
+            $booksQuery->where('cost', '<=', $maxCost);
+        }
+
+
+        $books = $booksQuery->paginate(10)->withQueryString();
+
+        return view('pages/home', [
+            'books' => $books,
+            'title' => 'E-SHOP',
+            'sort_by' => $sortBy,
+            'authors' => $filterData['authors'],
+            'publishers' => $filterData['publishers'],
+            'maxCost' => $filterData['maxCost']
+        ]);
+     }
+    
 
     /**
      *  Display a certain book

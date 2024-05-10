@@ -28,9 +28,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::post('/admin_login', [App\Http\Controllers\AdminAuthController::class, 'login']);
-
-
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/add', 'AdminController@index')->name('admin.add');
     Route::post('/add', 'App\Http\Controllers\BookController@store')->name('book.store');
