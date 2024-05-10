@@ -1,25 +1,29 @@
-const toggles = document.querySelectorAll('.filter-expand i')
-const filter = document.getElementById('filter')
-const frameFix = document.querySelector('.filter-window-framefix')
-const animationFrame = document.querySelector('.filter-animation-frame')
-const filterWindow = document.querySelector('.filter-window')
+window.Popup = {
+    frameFix: document.querySelector('.filter-window-framefix'),
+    animationFrame: document.querySelector('.filter-animation-frame'),
 
-toggles.forEach(e => {
-    e.addEventListener('click', () => {
-        e.parentElement.classList.toggle('open')
-    })
-})
+    open: function() {
+        this.frameFix.style.display = 'block'
+        this.animationFrame.style.animation = 'roll-in 1s'
+    },
 
-filter.addEventListener('click', () => {
-    frameFix.style.display = 'block'
-    animationFrame.style.animation = 'roll-in 1s'
-})
+    close: function() {
+        this.animationFrame.style.animation = 'roll-out 1s reverse'
+        setTimeout(() => this.frameFix.style.display = 'none', 800)
+    },
 
-frameFix.addEventListener('click', function() {
-    animationFrame.style.animation = 'roll-out 1s reverse'
-    setTimeout(() => this.style.display = 'none', 800)
-})
+    addListeners: function() {
+        document.querySelector('.filter-window').addEventListener('click', e => {
+            e.stopPropagation()
+        })
 
-filterWindow.addEventListener('click', e => {
-    e.stopPropagation()
-})
+        document.querySelectorAll('.filter-expand i').forEach(e => {
+            e.addEventListener('click', () => {
+                e.parentElement.classList.toggle('open')
+            })
+        })
+    }
+}
+
+
+Popup.addListeners()

@@ -52,34 +52,50 @@ class BookController extends Controller
      * Display all books.
      */
 
-     public function showAll(Request $request)
-     {
-         $sortBy = $request->input('sort_by', 'default');
-     
-         switch ($sortBy) {
-             case 'newest':
-                 $booksQuery = Book::orderBy('released_at', 'desc');
-                 break;
-             case 'cheapest':
-                 $booksQuery = Book::orderBy('cost');
-                 break;
-             case 'most_expensive':
-                 $booksQuery = Book::orderBy('cost', 'desc');
-                 break;
-             default:
-                 $booksQuery = Book::query();
-                 break;
-         }
-     
-         $books = $booksQuery->paginate(10); // Paginate the results, 10 items per page
-     
-         return view('pages/home', [
-             'books' => $books,
-             'title' => 'E-SHOP',
-             'sort_by' => $sortBy
-         ]);
+    public function showAll(Request $request)
+    {
+        $sortBy = $request->input('sort_by', 'default');
+
+        switch ($sortBy) {
+            case 'newest':
+                $booksQuery = Book::orderBy('released_at', 'desc');
+                break;
+            case 'cheapest':
+                $booksQuery = Book::orderBy('cost');
+                break;
+            case 'most_expensive':
+                $booksQuery = Book::orderBy('cost', 'desc');
+                break;
+            default:
+                $booksQuery = Book::query();
+                break;
+        }
+
+        $publishers = [];
+        $authors = [];
+        $bookData = $booksQuery->get();
+        foreach ($bookData as $book) {
+            $publisher = $book->publisher;
+            if (!in_array($publisher, $publishers)) {
+                $publishers[] = $publisher;
+            }
+            $author = $book->author->name;
+            if (!in_array($author, $authors)) {
+                $authors[] = $author;
+            }
+        }
+
+        $books = $booksQuery->paginate(10);
+
+        return view('pages/home', [
+            'books' => $books,
+            'title' => 'E-SHOP',
+            'sort_by' => $sortBy,
+            'authors' => $authors,
+            'publishers' => $publishers,
+        ]);
      }
-     
+
 
     public function showAllAdmin() {
         $books = Book::all();
@@ -159,7 +175,7 @@ class BookController extends Controller
         $book->save();
 
         return redirect()->route('edit');
-    
+
     }
 
     /**

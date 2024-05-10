@@ -15,7 +15,7 @@
         <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'most_expensive']) }}" class="{{ request('sort_by') == 'most_expensive' ? 'active' : '' }}">Najdrahšie</a>
 
 
-        <x-clickable-button styles="width: auto;" id="filter">
+        <x-clickable-button styles="width: auto;" id="filter" :onclick="'Popup.open()'">
             <i class="fa-solid fa-filter"></i> Filter
         </x-clickable-button>
 
@@ -32,24 +32,19 @@
 </div>
 
 
-    <div class="filter-window-framefix">
+    <div class="filter-window-framefix" onclick="Popup.close()">
         <div class="filter-animation-frame">
             <div class="filter-window">
                 <div class="filter-expand">
                     <i class="fa-solid fa-caret-down"></i>
-                    <span>Typ</span>
+                    <span>Autori</span>
                 </div>
 
                 <div class="filter-content">
                     <div>
-                        <div>
-                            <input type="checkbox" name="book_type" id="printed">
-                            <label for="printed">Tlačené knihy</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="book_type" id="electronic">
-                            <label for="electronic">Elektronické knihy</label>
-                        </div>
+                        @foreach($authors as $item)
+                            <x-filter-item :name="'book_author'" :id="$item" />
+                        @endforeach
                     </div>
                 </div>
 
@@ -61,17 +56,38 @@
 
                 <div class="filter-content">
                     <div>
-                        <div>
-                            <input type="checkbox" name="book_publisher" id="slovart">
-                            <label for="slovart">slovart</label>
+                        @foreach($publishers as $item)
+                            <x-filter-item :name="'book_publisher'" :id="$item" />
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="filter-expand">
+                    <i class="fa-solid fa-caret-down"></i>
+                    <span>Cena</span>
+                </div>
+
+                <div class="filter-content">
+                    <div>
+                        <div class="price-filter">
+                            <div>
+                                <input id="range-1" type="range" min="0" max="100" value="0" step="1">
+                                <input id="range-2" type="range" min="0" max="100" value="100" step="1">
+                                <span class="fill"></span>
+                                <span class="bar"></span>
+                            </div>
                         </div>
-                        <div>
-                            <input type="checkbox" name="book_publisher" id="fragment">
-                            <label for="fragment">Fragment</label>
+
+                        <div class="price-info">
+                            <span id="price-min">Min. cena: 0€</span>
+                            <span id="price-max">Max. cena: 100€</span>
                         </div>
                     </div>
                 </div>
 
+                <x-clickable-button onclick="Filter.apply()">
+                    Odoslať
+                </x-clickable-button>
             </div>
         </div>
     </div>
@@ -80,4 +96,5 @@
 
 @section('scripts')
 <script src="{{ asset('js/popup.js') }}"></script>
+<script src="{{ asset('js/filter.js') }}"></script>
 @stop

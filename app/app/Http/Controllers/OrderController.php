@@ -89,7 +89,9 @@ class OrderController extends Controller
         }
 
         $cart->delete();
-        Cookie::forget('shopping_cart_id');
+        if ( !auth()->check() ) {
+            Cookie::forget('shopping_cart_id');
+        }
 
         return response()->json(['message' => 'Order created successfully'], 201);
 

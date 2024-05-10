@@ -5,7 +5,7 @@
     z-index: 9999;
     display: none;
   }
-  
+
   .filter-animation-frame {
     position: absolute;
     inset: 0;
@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: center;
   }
-  
+
   .filter-window {
     border-radius: 12px;
     background-color: #F9F9FF;
@@ -21,7 +21,7 @@
     min-width: 200px;
     min-height: 300px;
   }
-  
+
   .filter-content {
     display: grid;
     grid-template-rows: 0fr;
@@ -29,12 +29,13 @@
     padding: 0.5rem 3rem;
   }
   .filter-content > div {
-    overflow: hidden;
+    overflow: auto;
+    max-height: 100px;
   }
   .filter-content label {
     text-transform: capitalize;
   }
-  
+
   .filter-expand {
     display: flex;
     gap: 1rem;
@@ -59,7 +60,76 @@
   .filter-expand.open + .filter-content {
     grid-template-rows: 1fr;
   }
-  
+
+  .price-filter {
+    position: relative;
+    width: 100%;
+  }
+  .price-filter > div {
+    height: 20px;
+    width: 100%;
+    position: inherit;
+  }
+  .price-filter .fill {
+    width: 100%;
+    height: 10px;
+    display: block;
+    border: 1px solid #000B3A;
+    border-radius: 10000rem;
+    background-color: #F9F9FF;
+    top: 6px;
+    position: relative;
+  }
+  .price-filter .bar {
+    height: 10px;
+    width: 100%;
+    display: block;
+    z-index: 1;
+    position: relative;
+    background-color: #000B3A;
+    top: -4px;
+    border-radius: 10000rem;
+    border: 1px solid transparent;
+  }
+  .price-filter input[type=range] {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    height: 10px;
+    pointer-events: none;
+    background: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    z-index: 2;
+  }
+  .price-filter input[type=range]::-webkit-slider-thumb {
+    pointer-events: auto;
+    background: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #000B3A;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+    top: 6px;
+  }
+  .price-filter input[type=range]::-webkit-slider-thumb:hover {
+    background-color: #222C4D;
+  }
+
+  .price-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.25rem 0;
+    color: #000B3A;
+  }
+
   @supports (backdrop-filter: blur(2px)) {
     .filter-window-framefix {
       backdrop-filter: blur(2px);
@@ -93,6 +163,5 @@
       transform: translateY(0);
     }
   }
-  
+
   /*# sourceMappingURL=popup.css.map */
-  
