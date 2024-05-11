@@ -50,7 +50,7 @@
                 </div>
 
 
-                <x-clickable-button buy>
+                <x-clickable-button buy :type="'submit'">
                     Pridať do košíka <i class="fa fa-solid fa-shopping-cart"></i>
                 </x-clickable-button>
             </form>
@@ -61,5 +61,4 @@
 
 @section('scripts')
 <script src="{{ asset('/js/product/index.js') }}"></script>
-<script src="{{ asset('/js/index.js') }}"></script>
 @stop

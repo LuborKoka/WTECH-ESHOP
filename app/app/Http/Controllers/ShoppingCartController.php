@@ -104,6 +104,9 @@ class ShoppingCartController extends Controller
         if ( $count <= 0 ) {
             $item->delete();
         } else {
+            if ( $item->book->stock < $count ) {
+                $count = $item->count;
+            }
             $item->count = $count;
             $item->save();
         }
@@ -114,6 +117,7 @@ class ShoppingCartController extends Controller
         $data = [
             'cost' => $cost,
             'resultCount' => $count         //k celej funkcii bude treba pribalit check, ci neni viac v kosiku ako na sklade
+                                            //pribalene
         ];
 
         return response()->json($data);
