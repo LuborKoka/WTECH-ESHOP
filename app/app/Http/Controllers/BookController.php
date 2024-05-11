@@ -43,7 +43,7 @@ class BookController extends Controller
         $book->genre_id = $request->input('genre_id');
         $authorName = $request->input('author_id');
         $author = Author::where('name', $authorName)->first();
-        
+
         if (!$author) {
             $author = new Author(); // ked nie je author v db tak ho pridame
             $author->name = $authorName;
@@ -123,11 +123,13 @@ class BookController extends Controller
 
         $publishersFilter = $request->input('publishers', []);
         if ( !empty($publishersFilter) ) {
+            $publishersFilter = explode(',', $publishersFilter);
             $booksQuery->whereIn('publisher', $publishersFilter);
         }
 
         $authorsFilter = $request->input('authors', []);
         if ( !empty($authorsFilter) ) {
+            $authorsFilter = explode(',', $authorsFilter);
             $booksQuery->whereHas('author', function ($query) use ($authorsFilter) {
                 $query->whereIn('name', $authorsFilter);
             });

@@ -13,33 +13,15 @@ window.Filter = {
     },
 
     constructUrl: function(form) {
-        let url = `${window.location.origin}/`
-
-        const sortBy = new URLSearchParams(window.location.search).get('sort_by')
-        if ( sortBy ) {
-            url += `?sort_by=${sortBy}`
-        }
+        const url = new URL(window.location.href)
+        const params = new URLSearchParams(url)
 
         for ( key in form ) {
-            const value = form[key]
-            if ( Array.isArray(value) ) {
-                value.forEach((val, i) => {
-                    if ( i === 0 ) {
-                        url += `&${key}[]=${encodeURIComponent(val)}`
-                    } else {
-                        url += `&${key}[]=${encodeURIComponent(val)}`
-                    }
-                })
-            } else {
-                url += `&${key}=${encodeURIComponent(value)}`
-            }
+            params.set(key, form[key])
         }
 
-        if (url.indexOf('?') === -1) {
-            url = url.replace(/\/&/, '/?');
-        }
-
-        return url
+        url.search = params.toString()
+        return url.toString()
     },
 
 
