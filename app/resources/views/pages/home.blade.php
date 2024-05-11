@@ -6,6 +6,7 @@
 <link href="{{ asset('/css/content.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/popup.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/pagination.css') }}" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 @stop
 
 @section('content')
@@ -18,7 +19,7 @@
 
 
         @if($includeFilter)
-        <x-clickable-button styles="width: auto;" id="filter" :onclick="'Popup.open()'">
+        <x-clickable-button id="filter" :onclick="'Popup.open()'">
             <i class="fa-solid fa-filter"></i> Filter
         </x-clickable-button>
         @endif

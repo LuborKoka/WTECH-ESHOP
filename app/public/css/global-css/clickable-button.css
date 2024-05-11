@@ -7,7 +7,7 @@
     color: #F9F9FF;
     cursor: pointer;
     padding: 0.75rem 1.5rem;
-    transition: box-shadow 0.2s opacity 0.2s;
+    transition: box-shadow 0.2s, opacity 0.2s;
     text-decoration: none;
   }
   .clickable-button a {

@@ -44,7 +44,7 @@
                 @csrf
                 <input type='hidden' value="{{ $book->id }}" name='book_id'>
 
-                <div class="labeled-input">
+                <div class="labeled-input" style="margin-bottom: 1rem">
                     <input type="number" min="1" value="1" max="{{ $book->stock }}" name="count" required id="book_count">
                     <label for="book_count">Počet</label>
                 </div>
