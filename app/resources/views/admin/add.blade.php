@@ -59,7 +59,7 @@
 
             <h2>Pridať produkt</h2>
 
-            <form method="POST" action="{{ route('book.store') }}">
+            <form method="POST" action="{{ route('book.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="product-info">
@@ -74,8 +74,13 @@
                                 <input type="text" id="author_id" name="author_id" required>
                             </li>
                             <li>
-                                <label for="genre_id">Žáner:</label>
-                                <input type="text" id="genre_id" name="genre_id" required>
+                            <label for="genre_id">Žáner:</label>
+                            <select name="genre_id">
+                                <option>Vyber žáner</option>
+                                @foreach($genres as $genre)
+                                    <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                @endforeach 
+                            </select>
                             </li>
                             <li>
                                 <label for="publisher">Vydavateľstvo:</label>
@@ -106,7 +111,6 @@
                                         name="product-image-upload" accept="image/*" multiple>
                                 </label>
                                 <!--<label for="product-image-upload">Nahrať obrázok:</label>-->
-
                             </li>
                         </ul>
 
