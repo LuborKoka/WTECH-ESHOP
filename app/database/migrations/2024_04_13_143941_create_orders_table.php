@@ -16,8 +16,8 @@ return new class extends Migration
             $table->text('shipping_address');
             $table->string('zipcode', 5);
             $table->string('city', 35);
-            $table->int('payment_method');
-            $table->int('shipping_method');
+            $table->integer('payment_method');
+            $table->integer('shipping_method');
             $table->string('first_name', 20);
             $table->string('last_name', 20);
             $table->string('email', 320);
