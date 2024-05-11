@@ -41,7 +41,16 @@ class BookController extends Controller
         $book->stock = $request->input('stock');
         $book->cost = $request->input('cost');
         $book->genre_id = $request->input('genre_id');
-        $book->author_id = $request->input('author_id');
+        $authorName = $request->input('author_id');
+        $author = Author::where('name', $authorName)->first();
+        
+        if (!$author) {
+            $author = new Author(); // ked nie je author v db tak ho pridame
+            $author->name = $authorName;
+            $author->save();
+        }
+
+        $book->author_id = $author->id;
 
         $book->save();
 
