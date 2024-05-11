@@ -59,7 +59,7 @@
 
             <h2>Pridať produkt</h2>
 
-            <form method="POST" action="{{ route('book.store') }}">
+            <form method="POST" action="{{ route('book.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="product-info">
@@ -111,7 +111,6 @@
                                         name="product-image-upload" accept="image/*" multiple>
                                 </label>
                                 <!--<label for="product-image-upload">Nahrať obrázok:</label>-->
-
                             </li>
                         </ul>
 

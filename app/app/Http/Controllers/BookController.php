@@ -52,6 +52,13 @@ class BookController extends Controller
 
         $book->author_id = $author->id;
 
+        if($request->file('product_image_upload')){
+            $file= $request->file('product_image_upload');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
+            $book->images = 'images/' . $filename;
+        }
+
         $book->save();
 
         return redirect()->route('add');

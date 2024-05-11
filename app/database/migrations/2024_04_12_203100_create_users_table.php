@@ -16,10 +16,6 @@ return new class extends Migration
             $table->string('email', 320)->unique();
             $table->string('password', 80);
             $table->string('name', 20);
-            $table->text('address')->nullable();
-            $table->string('zipcode', 5)->nullable();
-            $table->string('city', 35)->nullable();
-            $table->string('phone_number', 13)->nullable();
             $table->boolean('is_admin')->default(false);
             $table->timestampTZ('created_at')->default(DB::raw('NOW()'));
             $table->timestampTZ('updated_at')->default(DB::raw('NOW()'));
