@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Genre;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,7 +37,8 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::delete('/edit_book', 'App\Http\Controllers\BookController@destroy')->name('book.delete');
     
     Route::get('/add', function () {
-        return view('admin.add');
+        $genres = Genre::all();
+        return view('admin.add', compact('genres'));
     })->name('add');
 });
 

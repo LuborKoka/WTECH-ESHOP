@@ -81,7 +81,8 @@ main {
   }
   
   .product-details ul li input,
-  .product-details ul li textarea {
+  .product-details ul li textarea,
+  .product-details ul li select {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;

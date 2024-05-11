@@ -74,8 +74,13 @@
                                 <input type="text" id="author_id" name="author_id" required>
                             </li>
                             <li>
-                                <label for="genre_id">Žáner:</label>
-                                <input type="text" id="genre_id" name="genre_id" required>
+                            <label for="genre_id">Žáner:</label>
+                            <select name="genre_id">
+                                <option>Vyber žáner</option>
+                                @foreach($genres as $genre)
+                                    <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                @endforeach 
+                            </select>
                             </li>
                             <li>
                                 <label for="publisher">Vydavateľstvo:</label>
