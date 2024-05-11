@@ -45,8 +45,8 @@
                 <input type='hidden' value="{{ $book->id }}" name='book_id'>
 
                 <div class="labeled-input">
-                    <label for="book_count" style="transform: translateY(-100%) translateX(-10%) scale(0.8);">Počet</label>
-                    <input type="number" value="1" max="{{ $book->stock }}" name="count" required id="book_count">
+                    <input type="number" min="1" value="1" max="{{ $book->stock }}" name="count" required id="book_count">
+                    <label for="book_count">Počet</label>
                 </div>
 
 

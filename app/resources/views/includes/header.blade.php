@@ -10,9 +10,9 @@
     </div>
 
     <div class="search">
-        <form>
+        <form method="GET" action="{{ route('home') }}">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Hľadaj">
+            <input type="text" placeholder="Hľadaj" name="query">
             <button></button>
         </form>
     </div>

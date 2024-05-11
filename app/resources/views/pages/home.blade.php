@@ -1,3 +1,5 @@
+@props(['includeFilter' => true])
+
 @extends('layouts.main-layout', ['title' => $title])
 
 @section('head')
@@ -15,9 +17,11 @@
         <a href="{{ request()->fullUrlWithQuery(['sort_by' => 'most_expensive']) }}" class="{{ request('sort_by') == 'most_expensive' ? 'active' : '' }}">Najdrahšie</a>
 
 
+        @if($includeFilter)
         <x-clickable-button styles="width: auto;" id="filter" :onclick="'Popup.open()'">
             <i class="fa-solid fa-filter"></i> Filter
         </x-clickable-button>
+        @endif
 
     </div>
 
@@ -28,10 +32,10 @@
     </div>
 
     <div class="pagination-container">
-    {{ $books->links('pagination::bootstrap-5') }}
-</div>
+        {{ $books->links('pagination::bootstrap-5') }}
+    </div>
 
-
+    @if($includeFilter)
     <div class="filter-window-framefix" onclick="Popup.close()">
         <div class="filter-animation-frame">
             <div class="filter-window">
@@ -91,10 +95,13 @@
             </div>
         </div>
     </div>
+    @endif
 </main>
 @stop
 
 @section('scripts')
+@if($includeFilter)
 <script src="{{ asset('js/popup.js') }}"></script>
 <script src="{{ asset('js/filter.js') }}"></script>
+@endif
 @stop

@@ -51,12 +51,36 @@ class BookController extends Controller
 
     }
 
+    public function searchAll($queryItems, $booksQuery, $sortBy) {
+        $booksQuery->where(function ($query) use ($queryItems) {
+            foreach ($queryItems as $item) {
+                $query->orWhere(function ($query) use ($item) {
+                    $query->whereRaw("unaccent(publisher) ILIKE unaccent(?)", ["%{$item}%"])
+                        ->orWhereHas('author', function ($query) use ($item) {
+                            $query->whereRaw("unaccent(name) ILIKE unaccent(?)", ["%{$item}%"]);
+                        })
+                        ->orWhereRaw("unaccent(title) ILIKE unaccent(?)", ["%{$item}%"]);
+                });
+            }
+        });
+
+        $books = $booksQuery->paginate(10)->withQueryString();
+
+        return view('pages/home', [
+            'books' => $books,
+            'title' => 'Výsledky vyhľadávania',
+            'sort_by' => $sortBy,
+            'includeFilter' => false
+        ]);
+    }
+
     /**
      * Display all books.
      */
 
     public function showAll(Request $request) {
         $sortBy = $request->input('sort_by', 'default');
+        $query = $request->input('query', null);
 
         switch ($sortBy) {
             case 'newest':
@@ -71,6 +95,11 @@ class BookController extends Controller
             default:
                 $booksQuery = Book::query();
                 break;
+        }
+
+        if ( $query !== null ) {
+            $queryItems = explode(' ', $query);
+            return $this->searchAll($queryItems, $booksQuery, $sortBy);
         }
 
         //toto je pre vytvorenie filter guika
@@ -128,7 +157,7 @@ class BookController extends Controller
         $genre = Genre::where('name', $name)->first();
         $sortBy = $request->input('sort_by', 'default');
         $books = null;
-    
+
         switch ($sortBy) {
             case 'newest':
                 $booksQuery = Book::where('genre_id', $genre->id)->orderBy('released_at', 'desc');
@@ -143,8 +172,8 @@ class BookController extends Controller
                 $booksQuery = Book::where('genre_id', $genre->id);
                 break;
         }
-        
-    
+
+
         //toto je pre vytvorenie filter guika
         $bookData = $booksQuery->get();
         $filterData = $this->getFilterData($bookData);
@@ -184,7 +213,7 @@ class BookController extends Controller
             'maxCost' => $filterData['maxCost']
         ]);
      }
-    
+
 
     /**
      *  Display a certain book
