@@ -71,32 +71,31 @@
                         <ul>
                             
                             <li>
-                                <label for="product-name">Názov produktu:</label>
-                                <input type="text" id="product-name" name="title" value="{{ $book->title }}" required>
+                                <b>Názov produktu:</b> <input type="text" id="product-name" name="title" value="{{ $book->title }}" required>
                             </li>
 
                             <li>
-                                <b>Autor</b> <input type="text" name="author" value="{{ $book->author->name }}">
+                                <b>Autor:</b> <input type="text" name="author" value="{{ $book->author->name }}">
                             </li>
                             
                             <li>
-                                <b>Žáner</b> <input type="text" name="genre" value="{{ $book->genre->name }}">
+                                <b>Žáner:</b> <input type="text" name="genre" value="{{ $book->genre->name }}">
                             </li>
                             <li>
-                                <b>Vydavateľstvo</b> <input type="text" name="publisher" value="{{ $book->publisher }}">
+                                <b>Vydavateľstvo:</b> <input type="text" name="publisher" value="{{ $book->publisher }}">
                             </li>
                             <li>
-                                <b>Rok vydania</b> <input type="text" name="released_at"
+                                <b>Rok vydania:</b> <input type="text" name="released_at"
                                     value="{{ \Carbon\Carbon::parse($book->released_at)->format('Y') }}">
                             </li>
                             <li>
-                                <b>Detailný popis</b> <textarea name="description" rows="4">{{ $book->description }}</textarea>
+                                <b>Detailný popis:</b> <textarea name="description" rows="4">{{ $book->description }}</textarea>
                             </li>
                             <li>
-                                <b>Na sklade</b> <input name="stock" value="{{ $book->stock }}"></input>
+                                <b>Na sklade:</b> <input name="stock" value="{{ $book->stock }}"></input>
                             </li>
                             <li>
-                                <b>Cena</b> <input name="cost" value="{{ $book->cost }}"></input>
+                                <b>Cena:</b> <input name="cost" value="{{ $book->cost }}"></input>
                             </li>
                         </ul>
 
