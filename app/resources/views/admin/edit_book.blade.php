@@ -91,8 +91,8 @@
                                 <b>Vydavateľstvo:</b> <input type="text" name="publisher" value="{{ $book->publisher }}">
                             </li>
                             <li>
-                                <b>Rok vydania:</b> <input type="text" name="released_at"
-                                    value="{{ \Carbon\Carbon::parse($book->released_at)->format('Y') }}">
+                                <b>Rok vydania:</b> <input type="date" name="released_at"
+                                    value="{{ \Carbon\Carbon::parse($book->released_at)->toDateString() }}">
                             </li>
                             <li>
                                 <b>Detailný popis:</b> <textarea name="description" rows="4">{{ $book->description }}</textarea>
