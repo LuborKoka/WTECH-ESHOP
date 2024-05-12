@@ -31,7 +31,7 @@
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
-    width: clamp(240px, 25%, 300px);
+    width: clamp(240px, 100%, 300px);
   }
   .card:hover {
     transform: scale(1.02);
