@@ -23,12 +23,11 @@ window.Cashier = {
             if ( r.status === 201 ) {
                 this.nextPrevStep(true)
             }
-            return r.json()
-        })
-        .then(data => {
-            if ( data.error ) {
-                alert(data.error)
-            }
+            r.json().then(d => {
+                if ( d?.error ) {
+                    alert(d.error)
+                }
+            })
         })
         .catch()
     },

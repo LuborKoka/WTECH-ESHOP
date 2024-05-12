@@ -11,8 +11,9 @@ window.ShoppingCart = {
             }
         })
         .then(r => {
-            if ( r.status === 204 ) {
+            if ( r.status === 200 ) {
                 this.removeGuiItem(cartItemId)
+                r.json().then(d => this.updateCost(d.totalCost))
             }
         })
         .catch()

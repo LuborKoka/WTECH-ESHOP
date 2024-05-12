@@ -64,15 +64,25 @@ class ShoppingCartController extends Controller
 
         $cart = $this->findCart($user, $cartId);
 
+        if ( !auth()->check() ) {
+            Cookie::queue('shopping_cart_id', $cart->id, 30*24*30);
+        }
+
+        foreach( $cart->cartItems as $item ) {
+            if ( $item->book_id == $bookId ) {
+                $item->count += $count;
+                $item->save();
+
+                return redirect()->route('shopping-cart')->with('cart', $cart);
+            }
+        }
+
         $item = CartItem::create([
             'shopping_cart_id' => $cart->id,
             'book_id' => $bookId,
             'count' => $count
         ]);
 
-        if ( !auth()->check() ) {
-            Cookie::queue('shopping_cart_id', $cart->id, 30*24*30);
-        }
 
         return redirect()->route('shopping-cart')->with('cart', $cart);
     }
@@ -84,10 +94,15 @@ class ShoppingCartController extends Controller
 
     public function deleteItem(Request $request) {
         $id = $request->input('id');
+        $item = CartItem::find($id);
+        $cartId = $item->shopping_cart_id;
 
-        CartItem::find($id)->delete();
+        $item->delete();
 
-        return response()->noContent();
+        $cart = ShoppingCart::find($cartId);
+        $totalCost = $this->calculateTotalCost($cart);
+
+        return response()->json(['totalCost' => $totalCost], 200);
     }
 
     /**
