@@ -60,7 +60,6 @@ class BookController extends Controller
             $filePath = [];
 
             foreach( $files as $file ) {
-                info($file->getClientOriginalName());
                 $filename= date('YmdHi').$file->getClientOriginalName();
                 $file->move(public_path('images/product'), $filename);
                 $filePath[] = 'images/product/' . $filename;
@@ -304,18 +303,18 @@ class BookController extends Controller
     public function destroy(Request $request, Book $book) {
         $name = urldecode($request->query('name'));
         $book = Book::where('title', $name)->first();
-    
+
         $imagesDirectory = public_path('');
         $imagePaths = explode(';', $book->images);
-    
+
         foreach ($imagePaths as $imagePath) {
             $fullImagePath = $imagesDirectory . DIRECTORY_SEPARATOR . $imagePath;
-            
+
             if (File::exists($fullImagePath)) {
                 File::delete($fullImagePath);
             }
         }
-    
+
         $book->delete();
         return redirect()->route('edit');
     }
