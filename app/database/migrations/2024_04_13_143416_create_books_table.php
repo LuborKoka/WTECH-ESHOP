@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('title')->unique();
             $table->text('description');
             $table->string('publisher', 30);
-            $table->timestamptTZ('released_at')->default(DB::raw('NOW()'));
+            $table->timestampTZ('released_at')->default(DB::raw('NOW()'));
             $table->integer('stock')->default(0);
             $table->double('cost')->default(0);
             $table->foreignId('genre_id')->constrained()->onDelete('cascade');
