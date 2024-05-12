@@ -47,6 +47,20 @@ class OrderController extends Controller
         $form = $request->input('form');
         $cartId = Cookie::get('shopping_cart_id');
 
+        $patternWithPrefix = '/^\+[0-9]{3}(\s?[0-9]{3}){3}$/';
+        $pattern = '/^[0-9]{4}(\s?[0-9]{3}){2}$/';
+
+        if ( !preg_match($pattern, $form['phone_number']) && !preg_match($patternWithPrefix, $form['phone_number']) ) {
+            return response()->json(['error' => 'Nesprávny formát telefónneho čísla'], 400);
+        }
+
+        $zipCodePattern = '/^[0-9]{5}$/';
+
+        if ( !preg_match($zipCodePattern, $form['zip_code']) ) {
+            return response()->json(['error' => 'Nesprávny formát PSČ'], 400);
+        }
+
+
         $user = null;
 
         if ( auth()->check() ) {
@@ -57,7 +71,7 @@ class OrderController extends Controller
 
         foreach($cart->cartItems as $item) {
             if ( $item->count > $item->book->stock ) {
-                return response()->json(['message' => 'Not enough stock', 'book_title' => $item->book->title], 400);
+                return response()->json(['error' => 'Not enough stock', 'book_title' => $item->book->title], 400);
             }
         }
 
@@ -69,7 +83,7 @@ class OrderController extends Controller
             'payment_method'  => (int) $form['payment'],
             'first_name'  => $form['first_name'],
             'last_name'  => $form['last_name'],
-            'phone_number'  => $form['phone_number'],
+            'phone_number'  => str_replace(' ', '', $form['phone_number']),
             'email'  => $form['email'],
             'user_id' => $user != null ? (int) $user->id : null,
         ]);

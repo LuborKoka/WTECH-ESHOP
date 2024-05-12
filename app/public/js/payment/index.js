@@ -9,7 +9,6 @@ window.Cashier = {
     formData: {},
 
     makePayment: function() {
-        console.log(this.formData)
         fetch('/payment', {
             method: 'POST',
             headers: {
@@ -23,6 +22,12 @@ window.Cashier = {
         .then(r => {
             if ( r.status === 201 ) {
                 this.nextPrevStep(true)
+            }
+            return r.json()
+        })
+        .then(data => {
+            if ( data.error ) {
+                alert(data.error)
             }
         })
         .catch()

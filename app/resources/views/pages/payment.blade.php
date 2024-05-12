@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="labeled-input elevated">
-                    <input type="tel" id="phone-number" name="phone_number" required>
+                    <input type="tel" id="phone-number" name="phone_number" required maxlength="16">
                     <label for="phone-number">Telefónne číslo</label>
                 </div>
 
@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="labeled-input elevated">
-                        <input id="zip-code" name="zip_code" max="5" required>
+                        <input id="zip-code" name="zip_code" maxlength="5" required>
                         <label for="zip-code">PSČ</label>
                     </div>
                 </div>
