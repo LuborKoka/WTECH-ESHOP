@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @include('includes.head', ['title' => 'Login'])
+    @include('includes.head', ['title' => 'Upraviť produkt'])
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/admin/add_product/content.css') }}">
 
 </head>
@@ -59,7 +59,7 @@
             <h2>Upraviť produkt</h2>
 
             <div class="product-info">
-                @include('components.carousel', ['images' => explode(';', $book->images)])
+                @include('components.carousel', ['images' => explode(';', $book->images), 'isAdmin' => true])
                 <form method="POST" class="product-info"
                     action="{{ route('book.update', ['name' => urlencode($book->title)]) }}">
                     @csrf
@@ -125,7 +125,6 @@
 
 
     <script src="{{ asset('/js/product/index.js') }}"></script>
-    <script src="{{ asset('/js/index.js') }}"></script>
 </body>
 
 </html>

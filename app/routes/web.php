@@ -35,7 +35,8 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('edit_book', 'App\Http\Controllers\BookController@showAdmin')->name('edit_book');
     Route::put('/edit_book', 'App\Http\Controllers\BookController@update')->name('book.update');
     Route::delete('/edit_book', 'App\Http\Controllers\BookController@destroy')->name('book.delete');
-    
+    Route::delete('/edit_book/images', 'App\Http\Controllers\BookController@deleteImage')->name('book.edit_images');
+
     Route::get('/add', function () {
         $genres = Genre::all();
         return view('admin.add', compact('genres'));

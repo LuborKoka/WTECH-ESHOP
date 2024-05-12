@@ -336,4 +336,9 @@ class BookController extends Controller
             'publishers' => $publishers
         ];
     }
+
+
+    public function deleteImage() {
+
+    }
 }
