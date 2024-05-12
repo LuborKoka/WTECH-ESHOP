@@ -10,12 +10,12 @@ window.Admin = {
         })
         .then(r => {
             if ( r.status === 204 ) {
-                alert('ok')
+                this.removeGuiImage(bookName, filePath)
             }
         })
     },
 
-    removeGuiImage() {
-
+    removeGuiImage(name, path) {
+        document.getElementById(`${name}-${path}`).remove()
     }
 }

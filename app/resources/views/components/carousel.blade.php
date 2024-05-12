@@ -9,7 +9,7 @@ if ( $images[0] == '' ) {
 <section class="carousel">
     <div class="carousel-active-element">
         @foreach($images as $key => $route)
-            <div class="carousel-item-container{{ $key > 0 ? ' to-right' : '' }}">
+            <div class="carousel-item-container{{ $key > 0 ? ' to-right' : '' }}" id="{{ $book->title }}-{{ $route }}">
                 <img class="image" alt="product" src="{{ asset($route) }}">
                 @if ( $isAdmin )
                     <i class="fa-solid fa-trash-can delete-icon" onclick="Admin.deleteImage('{{ $book->title }}', '{{ $route }}')"></i>
