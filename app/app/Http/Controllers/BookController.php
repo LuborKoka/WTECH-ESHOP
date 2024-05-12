@@ -8,6 +8,9 @@ use App\Models\Author;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+
 
 
 class BookController extends Controller
@@ -301,9 +304,19 @@ class BookController extends Controller
     public function destroy(Request $request, Book $book) {
         $name = urldecode($request->query('name'));
         $book = Book::where('title', $name)->first();
-
+    
+        $imagesDirectory = public_path('');
+        $imagePaths = explode(';', $book->images);
+    
+        foreach ($imagePaths as $imagePath) {
+            $fullImagePath = $imagesDirectory . DIRECTORY_SEPARATOR . $imagePath;
+            
+            if (File::exists($fullImagePath)) {
+                File::delete($fullImagePath);
+            }
+        }
+    
         $book->delete();
-
         return redirect()->route('edit');
     }
 
