@@ -1,4 +1,8 @@
-@props(['images' => ['images/product/img_01.jpg', 'images/product/img_02.avif', 'images/product/img_03.jpg', 'images/product/img_04.jpg', 'images/product/img_05.avif']])
+@php
+if ( $images[0] == '' ) {
+    $images = ['images/product/img_01.jpg', 'images/product/img_02.avif', 'images/product/img_03.jpg', 'images/product/img_04.jpg', 'images/product/img_05.avif'];
+}
+@endphp
 
 <section class="carousel">
     <div class="carousel-active-element">

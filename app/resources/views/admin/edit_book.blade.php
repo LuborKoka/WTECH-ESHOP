@@ -3,7 +3,6 @@
 
 <head>
     @include('includes.head', ['title' => 'Login'])
-    @yield('head')
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/admin/add_product/content.css') }}">
 
 </head>
@@ -60,16 +59,14 @@
             <h2>Upraviť produkt</h2>
 
             <div class="product-info">
-                @include('components.carousel', ['images' => ['images/product/img_01.jpg', 'images/product/img_02.avif',
-                'images/product/img_03.jpg', 'images/product/img_04.jpg', 'images/product/img_05.avif']])
-                @yield('components.carousel')
+                @include('components.carousel', ['images' => explode(';', $book->images)])
                 <form method="POST" class="product-info"
                     action="{{ route('book.update', ['name' => urlencode($book->title)]) }}">
                     @csrf
                     @method('PUT')
                     <section class="product-details">
                         <ul>
-                            
+
                             <li>
                                 <b>Názov produktu:</b> <input type="text" id="product-name" name="title" value="{{ $book->title }}" required>
                             </li>
@@ -77,7 +74,7 @@
                             <li>
                                 <b>Autor:</b> <input type="text" name="author" value="{{ $book->author->name }}">
                             </li>
-                            
+
                             <li>
                             <b>Žáner:</b>
                                 <select name="genre_id">
@@ -114,14 +111,14 @@
                         </button>
                 </form>
 
-                
+
                 <form method="POST" action="{{ route('book.delete', ['name' => urlencode($book->title)]) }}" class="delete-form">
                     @csrf
                     @method('DELETE')
                     <button type="submit" style="padding: 1rem 2rem; font-size: 1.2rem; margin-top: 2rem;" class="clickable-button low-prio delete">Vymazať produkt</button>
                 </form>
             </section>
-                
+
             </div>
         </main>
     </div>
