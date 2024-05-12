@@ -350,7 +350,28 @@ class BookController extends Controller
     }
 
 
-    public function deleteImage() {
+    public function deleteImage(Request $request) {
+        $book_name = $request->input('name');
+        $file_path = $request->input('file_path');
 
+        $book = Book::where('title', $book_name)->first();
+        $paths = explode(';', $book->images);
+
+        $path = public_path('\\') . $file_path;
+        $res = unlink($path);
+
+        if ( $res ) {
+            $index = array_search($file_path, $paths);
+
+            if ($index !== false) {
+                array_splice($paths, $index, 1);
+            }
+        }
+
+        $paths = implode(';', $paths);
+        $book->images = $paths;
+        $book->save();
+
+        return response()->noContent();
     }
 }

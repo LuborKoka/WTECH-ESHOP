@@ -12,11 +12,7 @@ if ( $images[0] == '' ) {
             <div class="carousel-item-container{{ $key > 0 ? ' to-right' : '' }}">
                 <img class="image" alt="product" src="{{ asset($route) }}">
                 @if ( $isAdmin )
-                    <form method="DELETE" class="delete-icon" action="{{ route('book.edit_images', ['name' => urlencode($book->title), 'image_route' => urlencode($route)]) }}" >
-                        <button style="background: none; outline: none; border: none">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </form>
+                    <i class="fa-solid fa-trash-can delete-icon" onclick="Admin.deleteImage('{{ $book->title }}', '{{ $route }}')"></i>
                 @endif
             </div>
         @endforeach

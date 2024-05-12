@@ -71,7 +71,7 @@ main {
     flex-direction: column;
   }
 
-  .delete-icon i{
+  .delete-icon{
     position: absolute;
     top: 0;
     right: 4rem;

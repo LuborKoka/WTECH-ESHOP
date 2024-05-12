@@ -125,6 +125,7 @@
 
 
     <script src="{{ asset('/js/product/index.js') }}"></script>
+    <script src="{{ asset('/js/admin/edit_book.js') }}"></script>
 </body>
 
 </html>
