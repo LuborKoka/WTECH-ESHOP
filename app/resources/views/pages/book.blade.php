@@ -9,7 +9,7 @@
 <main>
     <h2>{{ $book->title }}</h2>
     <div class="product-info">
-        @include('components.carousel', ['images' => ['images/product/img_01.jpg', 'images/product/img_02.avif', 'images/product/img_03.jpg', 'images/product/img_04.jpg', 'images/product/img_05.avif']])
+        @include('components.carousel', ['images' => explode(';', $book->images)])
 
         <section class="product-details">
             <ul>

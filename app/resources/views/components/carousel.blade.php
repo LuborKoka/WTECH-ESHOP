@@ -1,3 +1,5 @@
+@props(['images' => ['images/product/img_01.jpg', 'images/product/img_02.avif', 'images/product/img_03.jpg', 'images/product/img_04.jpg', 'images/product/img_05.avif']])
+
 <section class="carousel">
     <div class="carousel-active-element">
         @foreach($images as $key => $route)
