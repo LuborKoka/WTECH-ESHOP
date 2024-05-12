@@ -10,6 +10,7 @@ use App\Http\Requests\UpdateBookRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 
 
@@ -269,8 +270,7 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Book $book)
-    {
+    public function update(Request $request, Book $book) {
         $name = urldecode($request->query('name'));
         $book = Book::where('title', $name)->first();
 
@@ -292,24 +292,23 @@ class BookController extends Controller
 
         $book->author_id = $author->id;
 
-        if ($request->file('product-image-upload')) {
-            $files = $request->file('product-image-upload');
-            $imagePaths = [];
-    
-            foreach ($files as $file) {
-                $filename = date('YmdHi') . $file->getClientOriginalName();
+        if($request->hasFile('product-image-upload')){
+            info('this shit running');
+            $files= $request->file('product-image-upload');
+            $imagePaths = explode(';', $book->images);
+
+            foreach( $files as $file ) {
+                $filename= date('YmdHi').$file->getClientOriginalName();
                 $file->move(public_path('images/product'), $filename);
                 $imagePaths[] = 'images/product/' . $filename;
             }
-    
-            $imagePaths = array_merge(explode(';', $book->images), $imagePaths);
+
             $book->images = implode(';', $imagePaths);
         }
 
         $book->save();
 
-        return redirect()->route('edit');
-
+        return redirect()->route('edit', ['name' => $book->title]);
     }
 
     /**

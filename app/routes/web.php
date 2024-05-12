@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::post('/add', 'App\Http\Controllers\BookController@store')->name('book.store');
     Route::get('/edit', 'App\Http\Controllers\BookController@showAllAdmin')->name('edit');
     Route::get('edit_book', 'App\Http\Controllers\BookController@showAdmin')->name('edit_book');
-    Route::put('/edit_book', 'App\Http\Controllers\BookController@update')->name('book.update');
+    Route::post('/edit_book', 'App\Http\Controllers\BookController@update')->name('book.update');
     Route::delete('/edit_book', 'App\Http\Controllers\BookController@destroy')->name('book.delete');
     Route::delete('/edit_book/images', 'App\Http\Controllers\BookController@deleteImage')->name('book.edit_images');
 

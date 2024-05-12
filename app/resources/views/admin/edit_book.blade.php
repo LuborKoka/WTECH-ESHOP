@@ -60,10 +60,10 @@
 
             <div class="product-info">
                 @include('components.carousel', ['images' => explode(';', $book->images), 'isAdmin' => true])
-                <form method="POST" class="product-info"
+                <form method="POST"  class="product-info" enctype="multipart/form-data"
                     action="{{ route('book.update', ['name' => urlencode($book->title)]) }}">
                     @csrf
-                    @method('PUT')
+
                     <section class="product-details">
                         <ul>
 
