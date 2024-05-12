@@ -36,7 +36,7 @@
 
     <div class="content-container">
         <nav class="primary-navigation">
-        <div>
+            <div>
                 <a class="link" href="{{ route('add') }}">Pridať produkt</a>
             </div>
             <div>
@@ -79,7 +79,7 @@
                                 <option>Vyber žáner</option>
                                 @foreach($genres as $genre)
                                     <option value="{{$genre->id}}">{{$genre->name}}</option>
-                                @endforeach 
+                                @endforeach
                             </select>
                             </li>
                             <li>
@@ -87,8 +87,8 @@
                                 <input type="text" id="publisher" name="publisher" required>
                             </li>
                             <li>
-                                <label for="released_at">Rok vydania:</label>
-                                <input type="text" id="released_at" name="released_at" required>
+                                <label for="released_at">Dátum vydania:</label>
+                                <input type="date" id="released_at" name="released_at" required>
                             </li>
                             <li>
                                 <label for="description">Detailný popis:</label>
@@ -108,16 +108,15 @@
                                     <span><i class="fa-solid fa-file-import" style="padding-right: .5rem;"></i> Pridať
                                         obrázok</span>
                                     <input style="display: none;" type="file" id="product-image-upload"
-                                        name="product-image-upload" accept="image/*" multiple>
+                                        name="product-image-upload[]" accept="image/*" multiple>
                                 </label>
                                 <!--<label for="product-image-upload">Nahrať obrázok:</label>-->
                             </li>
                         </ul>
 
-                        <button type="submit" style="padding: 1rem 2rem; font-size: 1.2rem; margin-top: 2rem;"
-                            class="clickable-button">
+                        <x-clickable-button :type="'submit'">
                             Pridať produkt
-                        </button>
+                        </x-clickable-button>
                     </section>
                 </div>
             </form>

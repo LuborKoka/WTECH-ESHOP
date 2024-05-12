@@ -52,11 +52,18 @@ class BookController extends Controller
 
         $book->author_id = $author->id;
 
-        if($request->file('product_image_upload')){
-            $file= $request->file('product_image_upload');
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('images'), $filename);
-            $book->images = 'images/' . $filename;
+        if($request->file('product-image-upload')){
+            $files= $request->file('product-image-upload');
+            $filePath = [];
+
+            foreach( $files as $file ) {
+                info($file->getClientOriginalName());
+                $filename= date('YmdHi').$file->getClientOriginalName();
+                $file->move(public_path('images/product'), $filename);
+                $filePath[] = $filename;
+            }
+
+            $book->images = implode(';', $filePath);
         }
 
         $book->save();
