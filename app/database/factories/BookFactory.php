@@ -16,7 +16,6 @@ class BookFactory extends Factory
             'title' => $this->faker->sentence,
             'publisher' => $this->faker->company,
             'description' => $this->faker->text(500),
-            'released_at' => $this->faker->year(),
             'stock' => $this->faker->numberBetween(0, 100),
             'cost' => $this->faker->randomFloat(2, 0, 100),
             'genre_id' => \App\Models\Genre::factory()->create()->id,
