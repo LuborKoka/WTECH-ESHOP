@@ -103,6 +103,15 @@
                             <li>
                                 <b>Cena:</b> <input name="cost" value="{{ $book->cost }}"></input>
                             </li>
+                            <li>
+                                <label class="clickable-button low-prio" style="padding: .75rem 1.5rem">
+                                    <span><i class="fa-solid fa-file-import" style="padding-right: .5rem;"></i> Pridať
+                                        obrázok</span>
+                                    <input style="display: none;" type="file" id="product-image-upload"
+                                        name="product-image-upload[]" accept="image/*" multiple>
+                                </label>
+                            </li>
+
                         </ul>
 
                         <button type="submit" style="padding: 1rem 2rem; font-size: 1.2rem; margin-top: 2rem;"

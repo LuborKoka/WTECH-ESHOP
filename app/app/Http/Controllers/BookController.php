@@ -291,6 +291,21 @@ class BookController extends Controller
         }
 
         $book->author_id = $author->id;
+
+        if ($request->file('product-image-upload')) {
+            $files = $request->file('product-image-upload');
+            $imagePaths = [];
+    
+            foreach ($files as $file) {
+                $filename = date('YmdHi') . $file->getClientOriginalName();
+                $file->move(public_path('images/product'), $filename);
+                $imagePaths[] = 'images/product/' . $filename;
+            }
+    
+            $imagePaths = array_merge(explode(';', $book->images), $imagePaths);
+            $book->images = implode(';', $imagePaths);
+        }
+
         $book->save();
 
         return redirect()->route('edit');
