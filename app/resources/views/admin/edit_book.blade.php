@@ -79,7 +79,16 @@
                             </li>
                             
                             <li>
-                                <b>Žáner:</b> <input type="text" name="genre" value="{{ $book->genre->name }}">
+                            <b>Žáner:</b>
+                                <select name="genre_id">
+                                    <option>Select genre</option>
+                                    @foreach($genres as $genre)
+                                        <option value="{{ $genre->id }}" {{ $book->genre_id == $genre->id ? 'selected' : '' }}>
+                                            {{ $genre->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
                             </li>
                             <li>
                                 <b>Vydavateľstvo:</b> <input type="text" name="publisher" value="{{ $book->publisher }}">

@@ -244,8 +244,9 @@ class BookController extends Controller
     public function showAdmin(Request $request) {
         $name = urldecode($request->query('name'));
         $book = Book::where('title', $name)->first();
+        $genres = Genre::all();
 
-        return view('admin.edit_book', ['book' => $book, 'title' => $name]);
+        return view('admin.edit_book', ['book' => $book, 'genres' => $genres, 'title' => $name]);
     }
 
     /**
@@ -270,9 +271,17 @@ class BookController extends Controller
         $book->released_at = $request->input('released_at');
         $book->stock = $request->input('stock');
         $book->cost = $request->input('cost');
-        $book->genre_id = $request->input('genre');
-        $book->author_id = $request->input('author');
+        $book->genre_id = $request->input('genre_id');
+        $authorName = $request->input('author');
+        $author = Author::where('name', $authorName)->first();
 
+        if (!$author) {
+            $author = new Author(); // ked nie je author v db tak ho pridame
+            $author->name = $authorName;
+            $author->save();
+        }
+
+        $book->author_id = $author->id;
         $book->save();
 
         return redirect()->route('edit');
