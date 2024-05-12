@@ -60,7 +60,7 @@ class BookController extends Controller
                 info($file->getClientOriginalName());
                 $filename= date('YmdHi').$file->getClientOriginalName();
                 $file->move(public_path('images/product'), $filename);
-                $filePath[] = $filename;
+                $filePath[] = 'images/product/' . $filename;
             }
 
             $book->images = implode(';', $filePath);
